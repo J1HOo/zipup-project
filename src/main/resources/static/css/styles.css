@@ -1,0 +1,242 @@
+/* -------------------- 공통 스타일 파트 ----------------------- */
+body, html, h1, h2, p, div, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.zipup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding-top: 80px;
+    max-width: 407px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.zipup-logo {
+    width: 158px;
+    height: 33px;
+    margin-bottom: 53px;
+}
+
+.zipup-label {
+    font-size: 23px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.zipup-input {
+    width: 407px;
+    height: 42px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.zipup-input:focus {
+    outline: none;
+    border: 2px solid #3e71fe;
+}
+
+.zipup-btn {
+    width: 407px;
+    height: 51px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.zipup-btn:hover {
+    background-color: #333;
+}
+
+/* -------------------- 헤더, 푸터 파트 ----------------------- */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+    border-bottom: none;
+    background-color: white;
+    position: relative;
+}
+
+.hf-logo {
+    height: 70px;
+    margin-bottom: 50px;
+}
+
+
+.nav {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.nav a.active {
+    color: #3E71FE;
+}
+.nav::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+}
+.auth-links {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.content {
+    flex: 1;
+}
+
+
+.footer {
+    background-color: #ECECEC;
+    padding: 40px 0;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    margin-top: 100px;
+    color: #555555;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 250px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.footer-info, .footer-contact {
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: left;
+}
+.footer-info p, .footer-contact p {
+    margin: 4px 0;
+}
+
+.footer-info strong, .footer-contact strong {
+    font-weight: bold;
+    color: #000;
+}
+
+/* -------------------- 로그인 파트 ----------------------- */
+
+.login-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 37px;
+    margin-top: 18px;
+}
+
+.login-button-group a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.login-button-group a:hover {
+    color: #3e71fe;
+}
+
+/* -------------------- 회원가입 선택 파트 ----------------------- */
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.signup-button-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 195px;
+    height: 116px;
+    border: 3px solid gray;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.signup-button-box:hover {
+    transform: scale(1.05);
+    border-color: #3e71fe;
+}
+.signup-button-box img.shop_icon,
+.signup-button-box img.cart_icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 5px;
+    transition: filter 0.3s ease;
+}
+.signup-button-box:hover img.shop_icon {
+    content: url("/images/svg/shopBlue.svg");
+}
+.signup-button-box:hover img.cart_icon {
+    content: url("/images/svg/cartBlue.svg");
+}
+.signup-button-box p {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+.signup-button-box:hover p {
+    color: #3e71fe;
+}

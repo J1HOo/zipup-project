@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="zipup-container">
+  <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
+
+  <input type="email" placeholder="이메일" class="zipup-input" />
+  <input type="password" placeholder="비밀번호" class="zipup-input" />
+  <button class="zipup-btn">로그인</button>
+
+  <div class="login-button-group">
+    <a href="../find/findPassword.html">비밀번호 찾기</a>
+    <a href="../find/findId.html">아이디 찾기</a>
+    <a href="../signup/signup.html">회원가입</a>
+  </div>
+</div>
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>

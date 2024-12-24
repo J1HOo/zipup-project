@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="zipup-container">
+  <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
+
+  <div class="signup-container">
+    <div class="signup-button-box">
+      <img
+              src="/images/svg/shopBlack.svg"
+              alt="가맹점 아이콘"
+              class="shop_icon"
+      />
+      <p>가맹점 / 기업회원</p>
+    </div>
+    <div class="signup-button-box">
+      <img
+              src="/images/svg/cartblack.svg"
+              alt="구매자 아이콘"
+              class="cart_icon"
+      />
+      <p>구매자 / 개인회원</p>
+    </div>
+  </div>
+</div>
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>

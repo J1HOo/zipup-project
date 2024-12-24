@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>판매자 회원가입</title>
+  <link
+          rel="stylesheet"
+          href="/css/styles.css"
+  />
+</head>
+<body>
+<div class="zipup-container">
+  <img
+          src="/images/svg/logo.svg"
+          alt="ZIP UP"
+          class="zipup-logo"
+  />
+  <label class="zipup-label">로그인 정보</label>
+  <input
+          type="text"
+          name="email"
+          placeholder="이메일"
+          class="zipup-input"
+  />
+  <input
+          type="password"
+          name="password"
+          placeholder="비밀번호"
+          class="zipup-input"
+  />
+  <br />
+  <label class="zipup-label">개인정보</label>
+  <input
+          type="text"
+          name="companyName"
+          placeholder="상호명"
+          class="zipup-input"
+  />
+  <input
+          type="text"
+          name="businessNumber"
+          placeholder="사업자번호(- 없이 작성)"
+          class="zipup-input"
+  />
+  <input
+          type="text"
+          name="phoneNumber"
+          placeholder="전화번호(- 없이 작성)"
+          class="zipup-input"
+  />
+  <input
+          type="text"
+          name="address"
+          placeholder="주소"
+          class="zipup-input"
+  />
+  <br />
+  <button class="zipup-btn">가입 완료</button>
+</div>
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>
