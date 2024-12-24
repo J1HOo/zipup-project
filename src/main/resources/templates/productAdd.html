@@ -5,30 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>productAdd</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<th:block th:replace="~{layout/header :: header}"></th:block>
-
-<header class="header">
-    <div class="logo">
-        <img src="/images/svg/logo.svg" alt="ZIP UP" class="hf-logo">
-    </div>
-    <nav class="nav">
-        <a th:href="@{/all}" class="active">ALL</a>
-        <a th:href="@{/outer}">OUTER</a>
-        <a th:href="@{/top}">TOP</a>
-        <a th:href="@{/bottom}">BOTTOM</a>
-        <a th:href="@{/acc}">ACC</a>
-    </nav>
-    <div class="auth-links">
-        <a th:href="@{/signup}">회원가입</a>
-        <a th:href="@{/login}">로그인</a>
-    </div>
-</header>
-
-
 <body>
+<th:block th:replace="~{layout/header :: header}"></th:block>
 <!-- 전체 컨테이너 -->
 <div class="seller-detail-container">
     <!-- 좌측 상단 그리드 -->
@@ -49,21 +30,29 @@
         </div>
         <div class="product">
             <label class="zipup-label">상품 등록</label>
-            <input type="text" class="zipup-input" type="text" placeholder="상품명"/>
-            <input type="text" class="zipup-input" type="text" placeholder="상품가격"/>
+            <label>
+                <input type="text" class="zipup-input" placeholder="상품명"/>
+            </label>
+            <label>
+                <input type="text" class="zipup-input" placeholder="상품가격"/>
+            </label>
         </div>
         <div class="options">
             <label class="zipup-label">상품 옵션 설정</label>
             <div class="option-container">
-                <input type="text" class="seller-optionColor" type="text" placeholder="색상 옵션 추가"/>
+                <label>
+                    <input type="text" class="seller-optionColor" placeholder="색상 옵션 추가"/>
+                </label>
                 <button class="seller-option-add-button1">
-                    <span><img src="../../assets/svg/plusGray.svg" class="plus-icon1"></span>
+                    <span><img src="/images/svg/plusGray.svg" class="plus-icon1"></span>
                 </button>
             </div>
             <div class="option-container">
-                <input type="text" class="seller-optionSize" type="text" placeholder="사이즈 옵션 추가"/>
+                <label>
+                    <input type="text" class="seller-optionSize" placeholder="사이즈 옵션 추가"/>
+                </label>
                 <button class="seller-option-add-button2">
-                    <span><img src="../../assets/svg/plusGray.svg" class="plus-icon2"></span>
+                    <span><img src="/images/svg/plusGray.svg" class="plus-icon2"></span>
                 </button>
                 <button class="not-option-btn" >옵션 없음</button>
                 <button class="zipup-btn">등록하기</button>
@@ -72,11 +61,13 @@
     </div>
     <!-- 하단 그리드 -->
     <div class="bottom-section">
-        <button class="upload-detail-image">상세페이지 등록 <img src="../../assets/svg/upload.svg" class="upload-icon"></button>
+        <button class="upload-detail-image">상세페이지 등록 <img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></button>
 
         <!-- 상세페이지 이미지 등록하기 전에는 형태 나타나지 않게 보여짐-->
         <div class="detail-image" hidden>상세페이지</div>
     </div>
 </div>
+
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
 </body>
 </html>

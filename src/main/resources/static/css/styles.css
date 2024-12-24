@@ -98,9 +98,11 @@ body, html, h1, h2, p, div, a {
     font-size: 16px;
     margin-bottom: 10px;
 }
+
 .nav a.active {
     color: #3E71FE;
 }
+
 .nav::after {
     content: "";
     position: absolute;
@@ -110,6 +112,7 @@ body, html, h1, h2, p, div, a {
     height: 2px;
     background-color: black;
 }
+
 .auth-links {
     position: absolute;
     top: 70px;
@@ -164,6 +167,7 @@ body, html, h1, h2, p, div, a {
     line-height: 1.8;
     text-align: left;
 }
+
 .footer-info p, .footer-contact p {
     margin: 4px 0;
 }
@@ -213,10 +217,12 @@ body, html, h1, h2, p, div, a {
     transition: all 0.3s ease;
     cursor: pointer;
 }
+
 .signup-button-box:hover {
     transform: scale(1.05);
     border-color: #3e71fe;
 }
+
 .signup-button-box img.shop_icon,
 .signup-button-box img.cart_icon {
     width: 64px;
@@ -224,12 +230,15 @@ body, html, h1, h2, p, div, a {
     margin-bottom: 5px;
     transition: filter 0.3s ease;
 }
+
 .signup-button-box:hover img.shop_icon {
     content: url("/images/svg/shopBlue.svg");
 }
+
 .signup-button-box:hover img.cart_icon {
     content: url("/images/svg/cartBlue.svg");
 }
+
 .signup-button-box p {
     font-size: 18px;
     font-weight: bold;
@@ -237,6 +246,7 @@ body, html, h1, h2, p, div, a {
     margin: 0;
     transition: color 0.3s ease;
 }
+
 .signup-button-box:hover p {
     color: #3e71fe;
 }
@@ -247,7 +257,6 @@ body, html, h1, h2, p, div, a {
     display: grid;
     grid-template-columns: 411px 421px; /*열 배치 크기*/
     gap: 40px 35px; /*그리드 간격 row column*/
-    grid-template-rows: repeat(6, minmax(59px, auto));
     justify-content: center;
     padding: 20px;
     align-items: start;
@@ -341,7 +350,7 @@ body, html, h1, h2, p, div, a {
     border-radius: 5px;
 }
 
-.seller-detail-container .category-btn:focus {
+.seller-detail-container .category-btn:hover {
     background-color: #3e71fe;
     color: white;
 }
@@ -392,18 +401,17 @@ body, html, h1, h2, p, div, a {
     display: grid;
     grid-template-columns: 411px 421px; /*열 배치 크기*/
     gap: 40px 35px; /*그리드 간격 row column*/
-    grid-template-rows: repeat(6, minmax(59px, auto));
     justify-content: center;
     padding: 20px;
     align-items: start;
 }
 
-.detail-container .option-select{
-    background-image: url('/static/images/svg/optiongray.svg');
-    background-repeat: no-repeat;
-    background-color: white;
-    border: solid 1px;
+.detail-container .ui-option-icon {
+    position: absolute;
+    top: 20px;
+    right: 15px;
 }
+
 
 .detail-container .product-image {
     display: flex;
@@ -415,4 +423,83 @@ body, html, h1, h2, p, div, a {
 
 .detail-container .right-section {
     line-height: 40px;
+}
+
+.detail-container .option-select-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detail-container .option-select-origin {
+    position: absolute;
+    right: 10px;
+}
+
+.detail-container .option-select-list {
+    display: none;
+    position: absolute;
+    font-size: 18px;
+    width: 100%;
+    height: 42px;
+    z-index: 15;
+    border: solid 1px #999999;
+    text-align: left;
+    margin-top: -3px;
+    box-sizing: border-box;
+}
+
+.detail-container .option-select-btn {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+}
+
+.detail-container .option-select-btn:after {
+    content:'\25BC';
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+}
+
+.detail-container .option-select-btn:focus {
+    border-color: #3E71FE;
+    outline: none;
+}
+
+.detail-container .option-select option {
+    padding: 10px;
+}
+
+.detail-container .option-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #999999;
+    border-radius: 8px;
+    background-color: white;
+    appearance: none; /* 브라우저 기본 스타일 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('static/images/svg/optiongray.svg'); /* 드롭다운 화살표 커스텀 */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+.detail-container .option-list {
+    height: 48px;
+    line-height: 48px;
+    padding-left: 15px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.detail-container .option-list:hover {
+    color: white;
+    background-color: #3E71FE;
+    box-sizing: border-box;
 }
