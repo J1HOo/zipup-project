@@ -1,0 +1,107 @@
+<!-- 이용자용 상세페이지 -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>productDetail</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+<style>
+  /* -------------------- 이용자 상세페이지 파트 ----------------------- */
+
+  .detail-container {
+    display: grid;
+    grid-template-columns: 411px 421px; /*열 배치 크기*/
+    gap: 40px 35px; /*그리드 간격 row column*/
+    grid-template-rows: repeat(6, minmax(59px, auto));
+    justify-content: center;
+    padding: 20px;
+    align-items: start;
+  }
+
+  .detail-container .option-select{
+    background-image: url('../../../../../../Documents/GitHub/ZipUp/zipup1.0/src/main/resources/static/images/svg/optiongray.svg');
+    background-repeat: no-repeat;
+    background-color: white;
+    border: solid 1px;
+  }
+
+  .detail-container .product-image {
+    display: flex;
+    width: 411px;
+    height: 411px;
+    margin-top: 12px;
+    background-color: #dddddd;
+  }
+
+  .detail-container .right-section {
+    line-height: 40px;
+  }
+</style>
+</head>
+
+
+<th:block th:replace="~{layout/header :: header}"></th:block>
+
+
+<body>
+<!-- 전체 컨테이너 -->
+<div class="detail-container">
+  <!-- 좌측 상단 그리드 -->
+  <div class="left-section">
+    <div class="image">
+      <label class="zipup-label">이미지</label>
+      <!-- 썸네일 이미지-->
+      <div class="product-image">썸네일</div>
+    </div>
+  </div>
+  <!-- 우측 상단 그리드 -->
+  <div class="right-section">
+    <label class="zipup-label">상호명</label><br>
+    <label class="zipup-label">상품명</label><br>
+    <label class="zipup-label">가격</label>
+    <!--옵션 선택-->
+    <div class="options">
+      <label class="zipup-label">옵션 선택</label>
+
+      <div class="option-select">
+
+        <select>
+          <option value="" disabled selected>색상을 선택하세요</option>
+        </select>
+        <input type="text" class="option-select-btn" placeholder="색상을 선택하세요">
+      </div>
+
+      <button class="zipup-btn">바로 구매</button>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-section">
+  <button class="upload-detail-image">상세페이지 등록 <img src="../../../../../Documents/GitHub/ZipUp/zipup1.0/src/main/resources/static/images/svg/upload.svg" class="upload-icon"></button>
+
+  <div class="detail-image">상세페이지</div>
+</div>
+</div>
+</body>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="/images/svg/logo.svg" alt="ZIP UP" class="hf-logo">
+    </div>
+    <div class="footer-info">
+      <p><strong>(주)집업</strong></p>
+      <p>대표이사: 집업 | 사업자등록번호: 123-45-67891</p>
+      <p>주소: 서울 강남구 테헤란로 4길 6 남도빌딩 5층</p>
+      <p>호스팅사업자: 집업</p>
+      <p>통신판매업 신고번호: 2024-서울강남-1234</p>
+    </div>
+    <div class="footer-contact">
+      <p><strong>고객센터 1525-2525</strong></p>
+      <p>운영시간: AM 10:00 ~ PM 17:00 (주말 및 공휴일 휴무)</p>
+      <p>고객문의: zipup.cs@gmail.com</p>
+    </div>
+  </div>
+</footer>
+</html>
