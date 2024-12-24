@@ -26,7 +26,7 @@ public class PageController {
         return "userSignup"; // userSignup.html로 이동
     }
 
-    @GetMapping("/signup/user")
+    @GetMapping("/signup/seller")
     public String sellerSignup() {
         return "sellerSignup"; // sellerSignup.html로 이동
     }
