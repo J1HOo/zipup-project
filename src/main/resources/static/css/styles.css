@@ -240,6 +240,16 @@ body, html, h1, h2, p, div, a {
 .signup-button-box:hover p {
     color: #3e71fe;
 }
+/* 새롭게 추가된 스타일 */
+.signup-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: inherit; /* 부모 색상 상속 */
 
 /* -------------------- 판매자 생성 파트 ----------------------- */
 

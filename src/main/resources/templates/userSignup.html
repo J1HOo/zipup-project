@@ -16,18 +16,19 @@
   <div class="userSignupContainer">
     <form action="/" method="post">
       <h1 class="zipup-label">로그인 정보</h1>
-      <input class="zipup-input" type="email" id="email" placeholder="이메일" /><br />
-      <input class="zipup-input" type="password" id="password" placeholder="비밀번호" /><br />
+      <input class="zipup-input" type="email" id="email" name="email" placeholder="이메일" /><br />
+      <input class="zipup-input" type="password" id="password" name="password" placeholder="비밀번호" /><br />
 
       <h1 class="zipup-label">개인 정보</h1>
-      <input class="zipup-input" type="text" id="userName" placeholder="이름" /><br />
+      <input class="zipup-input" type="text" id="userName" name="userName" placeholder="이름" /><br />
       <input
               class="zipup-input"
               type="number"
               id="phoneNumber"
+              name="phoneNumber"
               placeholder="전화번호(-없이 작성)"
       /><br />
-      <input class="zipup-input" type="text" id="address" placeholder="주소" /><br /><br />
+      <input class="zipup-input" type="text" id="address" name="address" placeholder="주소" /><br /><br />
       <button class="zipup-btn">가입 완료</button>
     </form>
   </div>
