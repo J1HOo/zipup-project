@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamzipup.zipup.mapper.ProductMapper">
+
+    <!--***************판매자 생성 페이지(product/add)*******************-->
+    <!-- 판매자 제품 등록 하기 -->
+    <insert id="insertProduct">
+        INSERT INTO PRODUCT(IMAGE, CATEGORY, PRODUCTNAME, PRICE, OPTION1, OPTION2, OPTION3, DESCRIPTION)
+        VALUES (#{image}, #{category}, #{productName}, #{price}, #{option1}, #{option2}, #{option3}, #{description});
+    </insert>
+
+    <!--***************이용자 상세 페이지(product/detail)*******************-->
+    <!-- 제품 색상 옵션 데이터 불러오기 -->
+    <select id="optionColor">
+        SELECT OPTION1
+        FROM PRODUCT
+        WHERE id = #{id}
+    </select>
+
+    <!-- 제품 사이즈 옵션 데이터 불러오기 -->
+    <select id="optionSize">
+        SELECT OPTION2
+        FROM PRODUCT
+        WHERE id = #{id}
+    </select>
+
+    <!-- 상세페이지 이미지 불러오기-->
+    <select id="description">
+        SELECT DESCRIPTION
+        FROM PRODUCT
+        WHERE id = #{id}
+    </select>
+
+</mapper>

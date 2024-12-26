@@ -8,8 +8,4 @@
         SELECT * FROM
     </select>
 
-
-
-
-
 </mapper>

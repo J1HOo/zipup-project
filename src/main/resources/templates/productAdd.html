@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>productAdd</title>
+    <title>제품 등록하기</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
@@ -61,8 +61,9 @@
     </div>
     <!-- 하단 그리드 -->
     <div class="bottom-section">
-        <button class="upload-detail-image">상세페이지 등록 <img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></button>
-
+        <form action = "/product/detail/${id}" method="post" onsubmit="return productAdd()">
+        <button type="submit" class="upload-detail-image">상세페이지 등록 <img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></button>
+        </form>
         <!-- 상세페이지 이미지 등록하기 전에는 형태 나타나지 않게 보여짐-->
         <div class="detail-image" hidden>상세페이지</div>
     </div>
