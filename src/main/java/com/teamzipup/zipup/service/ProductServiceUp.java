@@ -22,7 +22,7 @@ public class ProductServiceUp implements ProductService {
         return productList.stream().map(product -> {
             Map<String,Object> productMap = new HashMap<>();
             productMap.put("id",product.getId());
-            productMap.put("sellerid", product.getSellerid());
+            productMap.put("sellerid", product.getSellerId());
             productMap.put("image",product.getImage());
             productMap.put("productName",product.getProductName());
             productMap.put("price",product.getPrice());
