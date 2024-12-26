@@ -1,11 +1,19 @@
 package com.teamzipup.zipup.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
+@ToString
+
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; //상품아이디
     private String sellerId; //판매자 아이디
     private String image; //이미지
@@ -17,3 +25,4 @@ public class Product {
     private String category; //카테고리
     private String description; //상품 설명
 }
+

@@ -46,12 +46,16 @@ public class PageController {
         return "productList"; // productList.html로 이동
     }
 
+    @GetMapping("/product/add")
+    public String productAdd() {
+        return "productAdd"; // product/add로 이동
+    }
 
     @PostMapping("/product/add")
     public String productAdd(@ModelAttribute("product") Product product, Model model) {
         productService.insertProduct(product);
         model.addAttribute("msg", "상품 등록이 완료되었습니다.");
-        return "productDetail/#{id}"; // 등록된 productDetail.html로 이동
+        return "productDetail/${id}"; // 등록된 productDetail.html로 이동
     }
 
     @GetMapping("/product/detail")

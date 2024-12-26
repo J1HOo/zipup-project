@@ -4,6 +4,8 @@ import com.teamzipup.zipup.model.Product;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 @Mapper
 public interface ProductMapper {
     /* ******************판매자 생성 페이지(product/add)********************* */
@@ -19,4 +21,7 @@ public interface ProductMapper {
 
     // 상세페이지 이미지 불러오기
     String description(int id);
+
+    // 모든 제품 목록 조회
+    List<Product> getAllProduct();
 }
