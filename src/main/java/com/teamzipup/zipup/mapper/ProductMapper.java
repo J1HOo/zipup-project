@@ -1,13 +1,7 @@
 package com.teamzipup.zipup.mapper;
 
-import com.teamzipup.zipup.model.Product;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.teamzipup.zipup.dto.Product;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.ui.Model;
-
-import java.util.List;
 
 @Mapper
 public interface ProductMapper {

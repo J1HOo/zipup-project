@@ -1,6 +1,6 @@
 package com.teamzipup.zipup.controller;
 
-import com.teamzipup.zipup.model.Product;
+import com.teamzipup.zipup.dto.Product;
 import com.teamzipup.zipup.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

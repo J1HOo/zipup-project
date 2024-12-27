@@ -1,7 +1,7 @@
 package com.teamzipup.zipup.service;
 
 import com.teamzipup.zipup.mapper.ProductMapper;
-import com.teamzipup.zipup.model.Product;
+import com.teamzipup.zipup.dto.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

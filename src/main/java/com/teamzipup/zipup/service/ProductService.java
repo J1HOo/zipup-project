@@ -1,9 +1,6 @@
 package com.teamzipup.zipup.service;
 
-import com.teamzipup.zipup.model.Product;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 public interface ProductService {
     /* ******************판매자 생성 페이지(product/add)********************* */
