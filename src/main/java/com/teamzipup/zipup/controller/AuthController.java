@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AuthController {
@@ -57,6 +58,7 @@ public class AuthController {
         @RequestParam("email") String email,
         @RequestParam("password") String password,
         HttpSession session,
+        RedirectAttributes redirectAttributes,
         Model model
     ) {
         // 사용자 인증 로직
@@ -66,8 +68,8 @@ public class AuthController {
             session.setAttribute("loginUser", user); // 사용자 정보 저장
             return "redirect:/";
         } else {
-            model.addAttribute("error", "이메일 또는 비밀번호가 일치하지 않습니다.");
-            return "login";
+            redirectAttributes.addFlashAttribute("error", "이메일 또는 비밀번호가 일치하지 않습니다.");
+            return "redirect:/login";
         }
     }
 

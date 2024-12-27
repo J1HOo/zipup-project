@@ -16,6 +16,7 @@
   <input name="email" type="email" placeholder="이메일" class="zipup-input" required/>
   <input name="password" type="password" placeholder="비밀번호" class="zipup-input" required/>
   <button class="zipup-btn">로그인</button>
+    <p th:if="${error}" class="login-error-message" th:text="${error}"> </p>
   </form>
 
   <div class="login-button-group">

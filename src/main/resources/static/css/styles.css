@@ -204,6 +204,12 @@ body, html, h1, h2, p, div, a {
     color: #3e71fe;
 }
 
+.login-error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
 /* -------------------- 회원가입 선택 파트 ----------------------- */
 
 .signup-container {
@@ -262,10 +268,6 @@ body, html, h1, h2, p, div, a {
     text-decoration: none; /* 링크 밑줄 제거 */
     color: inherit; /* 부모 색상 상속 */
 }
-/*--------------------- 이용자 회원 가입 파트 ------------------- */
-
-
-
 
 /* -------------------- 판매자 생성 파트 ----------------------- */
 
