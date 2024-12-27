@@ -242,10 +242,10 @@ body, html, h1, h2, p, div, a {
     transition: filter 0.3s ease;
 }
 .signup-button-box:hover img.shop_icon {
-    content: url("/images/svg/shopBlue.svg");
+    content: url("static/images/svg/shopBlue.svg");
 }
 .signup-button-box:hover img.cart_icon {
-    content: url("/images/svg/cartBlue.svg");
+    content: url("static/images/svg/cartBlue.svg");
 }
 .signup-button-box p {
     font-size: 18px;
@@ -308,11 +308,11 @@ body, html, h1, h2, p, div, a {
 .seller-detail-container:has(.seller-optionColor:focus) .seller-option-add-button1 {
     border: solid 2px #3e71fe;
     outline: none;
-    content: url("/images/svg/plusBlue.svg")
+    content: url("static/images/svg/plusBlue.svg")
 }
 
 .seller-detail-container:has(.seller-optionColor:focus) .plus-icon1 {
-    content: url("/images/svg/plusBlue.svg")
+    content: url("static/images/svg/plusBlue.svg")
 }
 
 .seller-detail-container:has(.seller-optionSize:focus) .seller-option-add-button2 {
@@ -321,7 +321,7 @@ body, html, h1, h2, p, div, a {
 }
 
 .seller-detail-container:has(.seller-optionSize:focus) .plus-icon2 {
-    content: url("/images/svg/plusBlue.svg")
+    content: url("static/images/svg/plusBlue.svg")
 }
 
 
@@ -464,12 +464,20 @@ body, html, h1, h2, p, div, a {
     align-items: start;
 }
 
-.detail-container .option-select{
-    background-image: url('/static/images/svg/optiongray.svg');
-    background-repeat: no-repeat;
+.detail-container .options .option-select{
     background-color: white;
-    border: solid 1px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 407px;
+    height: 42px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
 }
+
+/*background-image: url('/static/images/svg/optiongray.svg');
+    background-repeat: no-repeat;*/
 
 .detail-container .product-image {
     display: flex;
