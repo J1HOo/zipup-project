@@ -9,6 +9,8 @@ public interface ProductMapper {
     // 판매자 제품 등록
     void insertProduct(Product product);
 
+    Product findById(long id); // 상품 ID로 조회
+
     /* ****************이용자 상세 페이지(product/detail)******************* */
     // 색상 옵션 데이터 불러오기
     String optionColor(int id);
