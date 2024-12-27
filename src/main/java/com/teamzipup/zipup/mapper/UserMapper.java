@@ -10,8 +10,11 @@ public interface UserMapper {
     // 모든 유저 목록 조회
     List<User> getAllUsers();
 
-    //유저 저장하기
+    //일반 이용자 저장하기
     void insertUser(User user);
+
+    //판매자 저장
+    void insertSeller(User user);
 
     // 로그인
     User findByEmail(String email);
