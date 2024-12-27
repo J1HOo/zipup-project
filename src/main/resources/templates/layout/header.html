@@ -13,14 +13,14 @@
   </nav>
   <div class="auth-links">
     <!-- 비회원 -->
-    <div th:if="${user == null}">
+    <div th:if="${session.loginUser == null}">
       <a th:href="@{/signup}">회원가입</a>
       <a th:href="@{/login}">로그인</a>
     </div>
 
     <!-- 유저 -->
-    <div th:if="${user != null}">
-      <a th:if="${user.role == 'seller'}" th:href="@{/product/add}">상품 생성</a> <!-- seller -->
+    <div th:if="${session.loginUser != null}">
+      <a th:if="${session.loginUser.role == 'seller'}" th:href="@{/product/add}">상품 생성</a> <!-- seller -->
       <a th:href="@{/mypage}">마이페이지</a>
       <a th:href="@{/logout}">로그아웃</a>
 
