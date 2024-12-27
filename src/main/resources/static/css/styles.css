@@ -253,147 +253,7 @@ body, html, h1, h2, p, div, a {
 
 /* -------------------- 판매자 생성 파트 ----------------------- */
 
-.seller-detail-container {
-    display: grid;
-    grid-template-columns: 411px 421px; /*열 배치 크기*/
-    gap: 40px 35px; /*그리드 간격 row column*/
-    justify-content: center;
-    padding: 20px;
-    align-items: start;
-}
 
-.seller-detail-container .seller-optionColor, .seller-detail-container .seller-optionSize {
-    width: 360px;
-    height: 42px;
-    border: 1px solid #999999;
-    border-radius: 8px;
-    padding: 12px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    font-size: 15px;
-}
-
-.seller-detail-container .seller-option-add-button1, .seller-detail-container .seller-option-add-button2 {
-    width: 41px;
-    height: 41px;
-    background-color: white;
-    border-radius: 8px;
-    border: solid 1px #999999;
-}
-
-.seller-detail-container .seller-optionColor:focus, .seller-detail-container .seller-optionSize:focus {
-    border: solid 2px #3e71fe;
-    outline: none;
-}
-
-/* 인풋 포커스와 버튼 색상 동기화 */
-.seller-detail-container:has(.seller-optionColor:focus) .seller-option-add-button1 {
-    border: solid 2px #3e71fe;
-    outline: none;
-    content: url("../images/svg/plusBlue.svg")
-}
-
-.seller-detail-container:has(.seller-optionColor:focus) .plus-icon1 {
-    content: url("../images/svg/plusBlue.svg")
-}
-
-.seller-detail-container:has(.seller-optionSize:focus) .seller-option-add-button2 {
-    border: solid 2px #3e71fe;
-    outline: none;
-}
-
-.seller-detail-container:has(.seller-optionSize:focus) .plus-icon2 {
-    content: url("../images/svg/plusBlue.svg")
-}
-
-
-.seller-detail-container .product-image {
-    display: flex;
-    width: 411px;
-    height: 411px;
-    border: solid 1px gray;
-    margin-top: 12px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.seller-detail-container .product-image:hover {
-    border: solid 2px #3e71fe;
-    color: #3e71fe;
-    font-weight: bold;
-}
-
-.seller-detail-container .detail-image {
-    width: 868px;
-    height: auto;
-    background-color: white;
-    color: white;
-    text-align: center;
-}
-
-.seller-detail-container .right-section {
-    line-height: 40px;
-}
-
-.seller-detail-container .category {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 15px;
-}
-
-.seller-detail-container .category-btn {
-    width: 100px;
-    height: 31px;
-    background-color: #D9D9D9;
-    border: none;
-    border-radius: 5px;
-}
-
-.seller-detail-container .category-btn:hover {
-    background-color: #3e71fe;
-    color: white;
-}
-
-.seller-detail-container .upload-detail-image {
-    width: 868px;
-    height: 51px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-}
-
-.seller-detail-container .upload-detail-image:hover {
-    background-color: #333;
-}
-
-.seller-detail-container .upload-icon {
-    padding-left: 8px;
-    width: 20px;
-}
-
-.seller-detail-container .not-option-btn {
-    width: 407px;
-    height: 42px;
-    border: 1px solid gray;
-    border-radius: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 40px;
-    font-size: 16px;
-    background-color: white;
-}
-
-.seller-detail-container .not-option-btn:focus {
-    background-color: #3e71fe;
-    color: white;
-    border: none;
-}
 
 /* -------------------- 이용자 상세페이지 파트 ----------------------- */
 
@@ -421,85 +281,85 @@ body, html, h1, h2, p, div, a {
     background-color: #dddddd;
 }
 
-.detail-container .right-section {
-    line-height: 40px;
-}
+    .detail-container .right-section {
+        line-height: 40px;
+    }
 
-.detail-container .option-select-text {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    .detail-container .option-select-text {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-.detail-container .option-select-origin {
-    position: absolute;
-    right: 10px;
-}
+    .detail-container .option-select-origin {
+        position: absolute;
+        right: 10px;
+    }
 
-.detail-container .option-select-list {
-    display: none;
-    position: absolute;
-    font-size: 18px;
-    width: 100%;
-    height: 42px;
-    z-index: 15;
-    border: solid 1px #999999;
-    text-align: left;
-    margin-top: -3px;
-    box-sizing: border-box;
-}
+    .detail-container .option-select-list {
+        display: none;
+        position: absolute;
+        font-size: 18px;
+        width: 100%;
+        height: 42px;
+        z-index: 15;
+        border: solid 1px #999999;
+        text-align: left;
+        margin-top: -3px;
+        box-sizing: border-box;
+    }
 
-.detail-container .option-select-btn {
-    position: relative;
-    display: inline-block;
-    width: 100px;
-}
+    .detail-container .option-select-btn {
+        position: relative;
+        display: inline-block;
+        width: 100px;
+    }
 
-.detail-container .option-select-btn:after {
-    content:'\25BC';
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 18px;
-}
+    .detail-container .option-select-btn:after {
+        content: '\25BC';
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 18px;
+    }
 
-.detail-container .option-select-btn:focus {
-    border-color: #3E71FE;
-    outline: none;
-}
+    .detail-container .option-select-btn:focus {
+        border-color: #3E71FE;
+        outline: none;
+    }
 
-.detail-container .option-select option {
-    padding: 10px;
-}
+    .detail-container .option-select option {
+        padding: 10px;
+    }
 
-.detail-container .option-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    border: 1px solid #999999;
-    border-radius: 8px;
-    background-color: white;
-    appearance: none; /* 브라우저 기본 스타일 제거 */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('static/images/svg/optiongray.svg'); /* 드롭다운 화살표 커스텀 */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 15px;
-}
+    .detail-container .option-select {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #999999;
+        border-radius: 8px;
+        background-color: white;
+        appearance: none; /* 브라우저 기본 스타일 제거 */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url('static/images/svg/optiongray.svg'); /* 드롭다운 화살표 커스텀 */
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 15px;
+    }
 
-.detail-container .option-list {
-    height: 48px;
-    line-height: 48px;
-    padding-left: 15px;
-    cursor: pointer;
-    box-sizing: border-box;
-}
+    .detail-container .option-list {
+        height: 48px;
+        line-height: 48px;
+        padding-left: 15px;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
 
-.detail-container .option-list:hover {
-    color: white;
-    background-color: #3E71FE;
-    box-sizing: border-box;
-}
+    .detail-container .option-list:hover {
+        color: white;
+        background-color: #3E71FE;
+        box-sizing: border-box;
+    }

@@ -1,6 +1,9 @@
 package com.teamzipup.zipup.mapper;
 
 import com.teamzipup.zipup.model.Product;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.ui.Model;
 
@@ -21,7 +24,4 @@ public interface ProductMapper {
 
     // 상세페이지 이미지 불러오기
     String description(int id);
-
-    // 모든 제품 목록 조회
-    List<Product> getAllProduct();
 }

@@ -1,15 +1,24 @@
 package com.teamzipup.zipup.service;
 
 import com.teamzipup.zipup.model.Product;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface ProductService {
     /* ******************판매자 생성 페이지(product/add)********************* */
 
-    // 모든 제품 목록 조회
-    List<Product> getAllProduct();
-
     // 판매자 제품 등록
-    void insertProduct(Product product);
+    void insertProduct(
+            long id,
+            String sellerId,
+            MultipartFile image,
+            String productName,
+            int price,
+            String option1,
+            String option2,
+            String option3,
+            String category,
+            MultipartFile description
+    );
 }
