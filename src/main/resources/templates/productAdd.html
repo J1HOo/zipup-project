@@ -6,266 +6,88 @@
     <meta charset="UTF-8">
     <title>제품 등록하기</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <style>
-        .seller-detail-container {
-            display: grid;
-            grid-template-columns: 411px 421px; /*열 배치 크기*/
-            gap: 40px 35px; /*그리드 간격 row column*/
-            justify-content: center;
-            padding: 20px;
-            align-items: start;
-        }
 
-        .seller-detail-container .seller-optionColor, .seller-detail-container .seller-optionSize {
-            width: 360px;
-            height: 42px;
-            border: 1px solid #999999;
-            border-radius: 8px;
-            padding: 12px;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        .seller-detail-container .seller-option-add-button1, .seller-detail-container .seller-option-add-button2 {
-            width: 42px;
-            height: 42px;
-            background-color: white;
-            border-radius: 8px;
-            border: solid 1px #999999;
-        }
-
-        .seller-detail-container .seller-optionColor:focus, .seller-detail-container .seller-optionSize:focus {
-            border: solid 2px #3e71fe;
-            outline: none;
-        }
-
-        /* 인풋 포커스와 버튼 색상 동기화 */
-        .seller-detail-container:has(.seller-optionColor:focus) .seller-option-add-button1 {
-            border: solid 2px #3e71fe;
-            outline: none;
-            content: url("/images/svg/plusBlue.svg")
-        }
-
-        .seller-detail-container:has(.seller-optionColor:focus) .plus-icon1 {
-            content: url("/images/svg/plusBlue.svg")
-        }
-
-        .seller-detail-container:has(.seller-optionSize:focus) .seller-option-add-button2 {
-            border: solid 2px #3e71fe;
-            outline: none;
-        }
-
-        .seller-detail-container:has(.seller-optionSize:focus) .plus-icon2 {
-            content: url("/images/svg/plusBlue.svg")
-        }
-
-
-        .seller-detail-container .product-image {
-            display: flex;
-            width: 411px;
-            height: 411px;
-            border: solid 1px gray;
-            margin-top: 12px;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .seller-detail-container .product-image:hover {
-            border: solid 2px #3e71fe;
-            color: #3e71fe;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .seller-detail-container .product-image #image{
-            opacity: 0;
-            position: absolute;
-            cursor: pointer;
-            width: 411px;
-            height: 411px;
-        }
-
-        .seller-detail-container .product-image span{
-        pointer-events: none;
-        }
-
-
-        .seller-detail-container .description-image {
-            width: 868px;
-            height: auto;
-            background-color: white;
-            color: white;
-            text-align: center;
-        }
-
-        .seller-detail-container .bottom-section .upload-description-image #description {
-            opacity: 0;
-            width: 868px;
-            height: 51px;
-            cursor: pointer;
-            position: absolute;
-        }
-
-        .seller-detail-container .bottom-section .upload-description-image span{
-            pointer-events: none;
-        }
-
-
-        .seller-detail-container .right-section {
-            line-height: 40px;
-        }
-
-        .seller-detail-container .category {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 15px;
-        }
-
-        .seller-detail-container .category-btn {
-            width: 100px;
-            height: 31px;
-            background-color: #D9D9D9;
-            border: none;
-            border-radius: 5px;
-            font-size: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .seller-detail-container .category input[type="radio"] {
-            display: none;
-        }
-
-        .seller-detail-container .category input[type="radio"]:checked + .category-btn {
-            background-color: #3e71fe;
-            color: white;
-        }
-
-        .seller-detail-container .upload-description-image {
-            width: 868px;
-            height: 51px;
-            background-color: black;
-            border: none;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .seller-detail-container .upload-description-image:hover {
-            background-color: #333;
-        }
-
-        .seller-detail-container .upload-icon {
-            padding-left: 8px;
-            width: 20px;
-        }
-
-        .seller-detail-container .not-option-btn {
-            width: 407px;
-            height: 42px;
-            border: 1px solid gray;
-            border-radius: 10px;
-            padding: 10px;
-            box-sizing: border-box;
-            margin-bottom: 40px;
-            font-size: 16px;
-            background-color: white;
-        }
-
-        .seller-detail-container .option-container .not-option-btn:focus {
-            background-color: #3e71fe;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-
-    </style>
 </head>
 
 <body>
 <th:block th:replace="~{layout/header :: header}"></th:block>
 <!-- 전체 컨테이너 -->
-<div class="seller-detail-container">
-    <!-- 좌측 상단 그리드 -->
-    <div class="left-section">
-        <div class="image">
-            <label for="image" class="zipup-label">이미지</label>
-            <div class="product-image">
-            <input type="file" id="image" name="image">
-            <span>이미지 박스를 클릭하여<br> 이미지를 추가해주세요</span>
+<form action="/product/detail" method="get" enctype="multipart/form-data">
+    <div class="seller-detail-container">
+        <!-- 좌측 상단 그리드 -->
+        <div class="left-section">
+            <div class="image">
+                <label for="image" class="zipup-label">이미지</label>
+                <div class="product-image">
+                    <input type="file" id="image" name="image">
+                    <span>이미지 박스를 클릭하여<br> 이미지를 추가해주세요</span>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- 우측 상단 그리드 -->
-    <div class="right-section">
-        <label class="zipup-label">카테고리</label>
-        <div class="category">
-            <input type="radio" id="outer" name="category" value="outer">
-            <label for="outer" class="category-btn">OUTER</label>
-            <input type="radio" id="top" name="category" value="top">
-            <label for="top" class="category-btn">TOP</label>
-            <input type="radio" id="bottom" name="category" value="bottom">
-            <label for="bottom" class="category-btn">BOTTOM</label>
-            <input type="radio" id="acc" name="category" value="acc">
-            <label for="acc" class="category-btn">ACC</label>
-        </div>
+        <!-- 우측 상단 그리드 -->
+        <div class="right-section">
+            <label class="zipup-label">카테고리</label>
+            <div class="category">
+                <input type="radio" id="outer" name="category" value="outer">
+                <label for="outer" class="category-btn">OUTER</label>
+                <input type="radio" id="top" name="category" value="top">
+                <label for="top" class="category-btn">TOP</label>
+                <input type="radio" id="bottom" name="category" value="bottom">
+                <label for="bottom" class="category-btn">BOTTOM</label>
+                <input type="radio" id="acc" name="category" value="acc">
+                <label for="acc" class="category-btn">ACC</label>
+            </div>
 
-        <div class="product">
-            <label class="zipup-label">상품 등록</label>
-            <label for="productName">
-                <input type="text" id="productName" name="productName" class="zipup-input" placeholder="상품명" required/>
-            </label>
-            <label for="price">
-                <input type="text" id="price" name="price" class="zipup-input" placeholder="상품가격" required/>
-            </label>
-        </div>
-
-        <div class="options">
-            <label class="zipup-label">상품 옵션 설정</label>
-            <div class="option-container">
-                <label for="option1">
-                <input type="text" id="option1" name="option1" class="seller-optionColor" placeholder="색상 옵션 추가">
+            <div class="product">
+                <label class="zipup-label">상품 등록</label>
+                <label for="productName">
+                    <input type="text" id="productName" name="productName" class="zipup-input" placeholder="상품명"
+                           required/>
                 </label>
-                <button type="button" class="seller-option-add-button1">
-                    <span><img src="/images/svg/plusGray.svg" class="plus-icon1"></span>
-                </button>
-
-                <label for="option2">
-                    <input type="text" id="option2" name="option2" class="seller-optionSize" placeholder="사이즈 옵션 추가"/>
+                <label for="price">
+                    <input type="text" id="price" name="price" class="zipup-input" placeholder="상품가격" required/>
                 </label>
-                <button type="button" class="seller-option-add-button2">
-                    <span><img src="/images/svg/plusGray.svg" class="plus-icon2"></span>
-                </button>
+            </div>
 
-                <button id="option3" name="option3" class="not-option-btn">옵션 없음</button>
+            <div class="options">
+                <label class="zipup-label">상품 옵션 설정</label>
+                <div class="option-container">
+                    <label for="option1">
+                        <input type="text" id="option1" name="option1" class="seller-optionColor"
+                               placeholder="색상 옵션 추가">
+                    </label>
+                    <button type="button" class="seller-option-add-button1">
+                        <span><img src="/images/svg/plusGray.svg" class="plus-icon1"></span>
+                    </button>
 
-                <form action = "/product/detail/{id}" method="get">
-                <button class="zipup-btn">등록하기</button>
-                </form>
+                    <label for="option2">
+                        <input type="text" id="option2" name="option2" class="seller-optionSize"
+                               placeholder="사이즈 옵션 추가"/>
+                    </label>
+                    <button type="button" class="seller-option-add-button2">
+                        <span><img src="/images/svg/plusGray.svg" class="plus-icon2"></span>
+                    </button>
+
+                    <button id="option3" name="option3" class="not-option-btn">옵션 없음</button>
+
+
+                    <button type="submit" class="zipup-btn">등록하기</button>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- 하단 그리드 -->
-    <div class="bottom-section">
-        <div class="upload-description-image">
-            <input type="file" id="description">
-            <span>상세페이지 등록<img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></span>
-        </div>
-        <!-- 상세페이지 이미지 등록하기 전에는 형태 나타나지 않게 보여짐-->
-        <div class="description-image" hidden>상세페이지</div>
+        <!-- 하단 그리드 -->
+        <div class="bottom-section">
 
+            <div class="upload-description-image">
+                <input type="file" id="description">
+                <span>상세페이지 등록<img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></span>
+            </div>
+            <!-- 상세페이지 이미지 등록하기 전에는 형태 나타나지 않게 보여짐-->
+            <div class="description-image" hidden>상세페이지</div>
+
+        </div>
     </div>
-</div>
+</form>
 
 <th:block th:replace="~{layout/footer :: footer}"></th:block>
 </body>
