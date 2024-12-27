@@ -4,37 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>회원가입</title>
-  <link rel="stylesheet" href="/css/styles.css"/>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .error-msg {
+      color: red;
+      font-size: 0.9em;
+      display: none; /* 기본적으로 메시지를 숨김 */
+    }
+  </style>
 </head>
 <body>
 <div class="zipup-container">
   <a th:href="@{/}">
-  <img
-          src="/images/svg/logo.svg"
-          alt="ZIP UP"
-          class="zipup-logo"
-  />
+    <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
   </a>
   <div class="userSignupContainer">
-    <form action="/signup/user" method="post">
+    
+    <form class="signup-form" action="/signup/user" method="post" novalidate>
+
       <h1 class="zipup-label">로그인 정보</h1>
-      <input class="zipup-input" type="email" id="email" name="email" placeholder="이메일" /><br />
-      <input class="zipup-input" type="password" id="password" name="password" placeholder="비밀번호" /><br />
+      <!-- 아이디(이메일) -->
+      <input class="zipup-input" type="email" id="email" name="email" placeholder="이메일" required /><br />
+      <!-- 비밀번호 -->
+      <input class="zipup-input" type="password" id="password" name="password" placeholder="비밀번호" required /><br>
+      <p class="error-msg">영문 숫자 특수기호 조합 8자리 이상 입력해야 합니다.</p>
 
       <h1 class="zipup-label">개인 정보</h1>
-      <input class="zipup-input" type="text" id="userName" name="userName" placeholder="이름" /><br />
-      <input
-              class="zipup-input"
-              type="number"
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="전화번호(-없이 작성)"
-      /><br />
-      <input class="zipup-input" type="text" id="address" name="address" placeholder="주소" /><br /><br />
-      <button class="zipup-btn">가입 완료</button>
+      <!-- 이름 -->
+      <input class="zipup-input" type="text" id="userName" name="userName" placeholder="이름" required /><br />
+      <!-- 전화번호 -->
+      <input class="zipup-input" type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호(-없이 작성)" required /><br />
+      <!-- 주소 -->
+      <input class="zipup-input" type="text" id="address" name="address" placeholder="주소" required /><br /><br />
+      <!-- 버튼 -->
+      <button class="zipup-btn" type="submit">가입 완료</button>
     </form>
   </div>
 </div>
 <div th:replace="layout/footer :: footer"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.getElementById("password");
+    const errorMsg = document.querySelector(".error-msg");
+    const form = document.querySelector(".signup-form");
+
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*+=-])[A-Za-z\d!@#$%^&*+=-]{8,}$/;
+
+    // 비밀번호 입력 시 실시간 검사
+    passwordInput.addEventListener("input", function () {
+      const password = passwordInput.value;
+
+      if (!passwordPattern.test(password)) {
+        errorMsg.style.display = "block";
+      } else {
+        errorMsg.style.display = "none";
+      }
+    });
+
+    // 비밀번호 입력 필드가 포커스를 잃으면 메시지 숨기기
+    passwordInput.addEventListener("blur", function () {
+      errorMsg.style.display = "none";
+    });
+
+
+    // 폼 제출 시 비밀번호 검사
+    form.addEventListener("submit", function (event) {
+      const password = passwordInput.value;
+
+      if (!passwordPattern.test(password)) {
+        alert("비밀번호는 영문, 숫자, 특수문자 조합으로 8자리 이상이어야 합니다.");
+        event.preventDefault(); // 폼 제출 방지
+      }
+    });
+  });
+</script>
 </body>
 </html>
