@@ -24,5 +24,5 @@ public class User {
     private String userName;           // '사용자 이름'
     private String phoneNumber;     // '전화번호'
     private String companyName;    // '상호명 (판매자 전용)'
-    private String businessNumber;  // '사업자 등록 번호 (판매자 전용)'
+    private String businessNumber;  // '사업자 등록 번호 (판매자 전용)'11111
 }
