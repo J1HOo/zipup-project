@@ -19,7 +19,7 @@
             <div class="image">
                 <label for="image" class="zipup-label">이미지</label>
                 <div class="product-image">
-                    <input type="file" id="image" name="image">
+                    <input type="file" id="image" name="image" required>
                     <span>이미지 박스를 클릭하여<br> 이미지를 추가해주세요</span>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                            required/>
                 </label>
                 <label for="price">
-                    <input type="text" id="price" name="price" class="zipup-input" placeholder="상품가격" required/>
+                    <input type="number" id="price" name="price" class="zipup-input" placeholder="상품가격" required/>
                 </label>
             </div>
 
@@ -79,7 +79,7 @@
         <div class="bottom-section">
 
             <div class="upload-description-image">
-                <input type="file" id="description">
+                <input type="file" id="description" name="description">
                 <span>상세페이지 등록<img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></span>
             </div>
             <!-- 상세페이지 이미지 등록하기 전에는 형태 나타나지 않게 보여짐-->
