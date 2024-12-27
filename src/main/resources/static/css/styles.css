@@ -464,12 +464,20 @@ body, html, h1, h2, p, div, a {
     align-items: start;
 }
 
-.detail-container .option-select{
-    background-image: url('/static/images/svg/optiongray.svg');
-    background-repeat: no-repeat;
+.detail-container .options .option-select{
     background-color: white;
-    border: solid 1px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 407px;
+    height: 42px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
 }
+
+/*background-image: url('/static/images/svg/optiongray.svg');
+    background-repeat: no-repeat;*/
 
 .detail-container .product-image {
     display: flex;

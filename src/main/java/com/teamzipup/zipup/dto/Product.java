@@ -15,7 +15,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; //상품아이디
-    private String sellerId; //판매자 아이디
+
+    private long sellerId; //판매자 아이디
     private String image; //이미지
     private String productName; //상품명
     private int price; //상품 가격

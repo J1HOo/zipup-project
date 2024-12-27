@@ -17,27 +17,18 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public void insertProduct(
-            long id,
-            String sellerId,
-            MultipartFile image,
-            String productName,
-            int price,
-            String option1,
-            String option2,
-            String option3,
-            String category,
-            MultipartFile description) {
-        Properties properties = System.getProperties(); //프로퍼티 이용해서 기본 파일 저장 경로 가져오기
-        String productDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_images/"; //product_images 폴더 내 썸네일이미지 들어감 설정
-        String descriptionDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_description/"; //product_description 폴더 내 상세이미지 들어감 설정
-        System.out.println("productDir : " + productDir); //경로 출력
-        System.out.println("descriptionDir : " + descriptionDir); //경로 출력
-
-        File imgFolder = new File(productDir); //product_images 폴더 생성
-        if (!imgFolder.exists()) {
-            imgFolder.mkdirs();
-        }
+    public long insertProduct(
+        long sellerId,
+        MultipartFile image,
+        String productName,
+        int price,
+        String option1,
+        String option2,
+        String option3,
+        String category,
+        MultipartFile description) {
+        String productDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_images/";
+        String descriptionDir = System.getProperty("user.dir") + "/src/main/resources/static/images/description_images/";
 
         // 이미지 파일 이름 가져오기
         String imageName = image.getOriginalFilename();
@@ -47,31 +38,37 @@ public class ProductServiceImpl implements ProductService {
         File imageFile = new File(productDir + imageName);
         File descriptionFile = new File(descriptionDir + descriptionName);
 
-        //이미지 저장
+
         try {
+            if (!imageFile.getParentFile().exists()) imageFile.getParentFile().mkdirs();
+            if (!descriptionFile.getParentFile().exists()) descriptionFile.getParentFile().mkdirs();
+
             image.transferTo(imageFile);
             description.transferTo(descriptionFile);
 
             Product product = new Product();
-            product.setId(id);
-            product.setSellerId(sellerId);
+            product.setSellerId(sellerId); // 여기서 sellerId 설정
             product.setProductName(productName);
             product.setPrice(price);
             product.setOption1(option1);
             product.setOption2(option2);
             product.setOption3(option3);
             product.setCategory(category);
-            product.setDescription(descriptionName);
-
             product.setImage("/images/product_images/" + imageName);
             product.setDescription("/images/product_description/" + descriptionName);
 
-            productMapper.insertProduct(product);
-            System.out.println("파일 업로드 완료");
-            System.out.println("썸네일 저장경로 : " + imageFile.getAbsolutePath());
-            System.out.println("상세이미지 저장경로 : " + descriptionFile.getAbsolutePath());
+            productMapper.insertProduct(product); // DB에 데이터 삽입
+
+            System.out.println("상품 등록 성공: " + product);
+            return product.getId(); // 생성된 상품 ID 반환
         } catch (IOException e) {
-            System.out.println(e.getMessage() + "이미지 저장 중 문제가 발생했습니다.");
+            throw new RuntimeException("파일 저장 실패: " + e.getMessage(), e);
         }
+    }
+
+
+    @Override
+    public Product getProductById(long id) {
+        return productMapper.findById(id);
     }
 }

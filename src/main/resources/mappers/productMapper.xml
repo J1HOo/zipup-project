@@ -6,10 +6,11 @@
 
     <!--***************판매자 생성 페이지(product/add)*******************-->
     <!-- 판매자 제품 등록 하기 -->
-    <insert id="insertProduct">
-        INSERT INTO PRODUCT(IMAGE, CATEGORY, PRODUCTNAME, PRICE, OPTION1, OPTION2, OPTION3, DESCRIPTION)
-        VALUES (#{image}, #{category}, #{productName}, #{price}, #{option1}, #{option2}, #{option3}, #{description});
+    <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO PRODUCT (SELLERID, IMAGE, CATEGORY, PRODUCTNAME, PRICE, OPTION1, OPTION2, OPTION3, DESCRIPTION)
+        VALUES (#{sellerId}, #{image}, #{category}, #{productName}, #{price}, #{option1}, #{option2}, #{option3}, #{description});
     </insert>
+
 
     <!--***************이용자 상세 페이지(product/detail)*******************-->
     <!-- 제품 색상 옵션 데이터 불러오기 -->
@@ -30,6 +31,13 @@
     <select id="description">
         SELECT DESCRIPTION
         FROM PRODUCT
+        WHERE id = #{id}
+    </select>
+
+    <!-- 상품 조회 -->
+    <select id="findById" resultType="com.teamzipup.zipup.dto.Product">
+        SELECT *
+        FROM product
         WHERE id = #{id}
     </select>
 
