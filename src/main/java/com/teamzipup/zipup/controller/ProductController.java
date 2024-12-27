@@ -62,7 +62,7 @@ public class ProductController {
         Product product = productService.getProductById(id);
         if (product == null) {
             model.addAttribute("error", "상품을 찾을 수 없습니다.");
-            return "index";
+            return "redirect:/";
         }
 
         model.addAttribute("product", product);
