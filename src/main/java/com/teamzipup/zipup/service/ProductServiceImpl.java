@@ -28,22 +28,26 @@ public class ProductServiceImpl implements ProductService {
         String category,
         MultipartFile description) {
         String productDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_images/";
-        String descriptionDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_description/";
+        String descriptionDir = System.getProperty("user.dir") + "/src/main/resources/static/images/description_images/";
 
         // 이미지 파일 이름 가져오기
         String imageName = image.getOriginalFilename();
         String descriptionName = description.getOriginalFilename();
 
+        //이미지 저장할 경로 + 이미지 이름
+        File imageFile = new File(productDir + imageName);
+        File descriptionFile = new File(descriptionDir + descriptionName);
+
+
         try {
-            // 이미지 저장
-            File imageFile = new File(productDir + imageName);
-            File descriptionFile = new File(descriptionDir + descriptionName);
+            if (!imageFile.getParentFile().exists()) imageFile.getParentFile().mkdirs();
+            if (!descriptionFile.getParentFile().exists()) descriptionFile.getParentFile().mkdirs();
 
             image.transferTo(imageFile);
             description.transferTo(descriptionFile);
 
             Product product = new Product();
-            product.setSellerId(sellerId);
+            product.setSellerId(sellerId); // 여기서 sellerId 설정
             product.setProductName(productName);
             product.setPrice(price);
             product.setOption1(option1);
@@ -53,18 +57,15 @@ public class ProductServiceImpl implements ProductService {
             product.setImage("/images/product_images/" + imageName);
             product.setDescription("/images/product_description/" + descriptionName);
 
-            // Mapper를 통해 DB에 삽입
-            productMapper.insertProduct(product);
+            productMapper.insertProduct(product); // DB에 데이터 삽입
 
-            System.out.println("파일 업로드 및 상품 등록 완료");
-            System.out.println("썸네일 저장경로 : " + imageFile.getAbsolutePath());
-            System.out.println("상세이미지 저장경로 : " + descriptionFile.getAbsolutePath());
-
+            System.out.println("상품 등록 성공: " + product);
             return product.getId(); // 생성된 상품 ID 반환
         } catch (IOException e) {
-            throw new RuntimeException("이미지 저장 실패: " + e.getMessage(), e);
+            throw new RuntimeException("파일 저장 실패: " + e.getMessage(), e);
         }
     }
+
 
     @Override
     public Product getProductById(long id) {

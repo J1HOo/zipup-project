@@ -23,9 +23,9 @@ public class ProductController {
     @PostMapping("/product/add")
     public String productAdd(@RequestParam("productName") String productName,
                              @RequestParam("price") int price,
-                             @RequestParam("option1") String option1,
-                             @RequestParam("option2") String option2,
-                             @RequestParam("option3") String option3,
+                             @RequestParam(value = "option1", required = false) String option1,
+                             @RequestParam(value = "option2", required = false) String option2,
+                             @RequestParam(value = "option3", required = false) String option3,
                              @RequestParam("category") String category,
                              @RequestParam("description") MultipartFile description,
                              @RequestParam("image") MultipartFile image,
@@ -38,7 +38,7 @@ public class ProductController {
             return "redirect:/login";
         }
 
-        if (!"SELLER".equals(loginUser.getRole())) {
+        if (!"seller".equals(loginUser.getRole())) {
             model.addAttribute("error", "상품 등록 권한이 없습니다.");
             return "redirect:/";
         }
@@ -48,8 +48,7 @@ public class ProductController {
         try {
             // 상품 등록 후 생성된 ID 반환
             long productId = productService.insertProduct(sellerId, image, productName, price, option1, option2, option3, category, description);
-
-            return "redirect:/product/detail/" + productId; // 상세 페이지로 리다이렉트
+            return "redirect:/product/detail/" + productId;
         } catch (Exception e) {
             model.addAttribute("error", "상품 등록 중 문제가 발생했습니다.");
             return "redirect:/product/add";
@@ -63,11 +62,11 @@ public class ProductController {
         Product product = productService.getProductById(id);
         if (product == null) {
             model.addAttribute("error", "상품을 찾을 수 없습니다.");
-            return "error/404"; // 상품이 없을 경우 404 페이지
+            return "index";
         }
 
         model.addAttribute("product", product);
-        return "product/detail"; // 상세 페이지 템플릿
+        return "productDetail"; // 상세 페이지
     }
 }
 
