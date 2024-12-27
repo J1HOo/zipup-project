@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/styles.css" />
-  </head>
-  <body>
-    <div class="zipup-container">
-      <img
-        src="/src/main/resources/static/images/svg/logo.svg"
-        alt="ZIP UP"
-        class="zipup-logo"
-      />
-      <div class="userSignupContainer">
-        <h1 class="zipup-label">로그인 정보</h1>
-        <input class="zipup-input" type="text" placeholder="이메일" /><br />
-        <input class="zipup-input" type="text" placeholder="비밀번호" /><br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/css/styles.css?v-1.1" />
+  <style>
 
-        <h1 class="zipup-label">개인 정보</h1>
-        <input class="zipup-input" type="text" placeholder="이름" /><br />
-        <input
-          class="zipup-input"
-          type="text"
-          placeholder="전화번호(-없이 작성)"
-        /><br />
-        <input class="zipup-input" type="text" placeholder="주소" /><br /><br />
-        <button class="zipup-btn">가입 완료</button>
-      </div>
-    </div>
-    <div th:replace="layout/footer :: footer"></div>
-  </body>
+  </style>
+</head>
+<body>
+<div class="zipup-container">
+  <a th:href="@{/}">
+    <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" >
+  </a>
+  <div class="userSignupContainer">
+    <form class="signup-form" action="/signup/user" method="post">
+      <h1 class="zipup-label">로그인 정보</h1>
+      <!-- 아이디(이메일) -->
+      <input class="zipup-input" type="email" id="email" name="email" placeholder="이메일" required ><br>
+      <!-- 비밀번호 -->
+      <input class="zipup-input" type="password" id="password" name="password" placeholder="비밀번호" required /><br>
+
+
+      <h1 class="zipup-label">개인 정보</h1>
+      <!-- 이름 -->
+      <input class="zipup-input" type="text" id="userName" name="userName" placeholder="이름" required ><br >
+      <!-- 전화번호 -->
+      <input class="zipup-input" type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호(-없이 작성)" required ><br >
+      <!-- 주소 -->
+      <input class="zipup-input" type="text" id="address" name="address" placeholder="주소" required ><br ><br >
+      <!-- 버튼 -->
+      <button class="zipup-btn" type="submit">가입 완료</button>
+    </form>
+  </div>
+</div>
+<div th:replace="layout/footer :: footer"></div>
+
+<script src="/js/signUp.js"></script>
+</body>
 </html>

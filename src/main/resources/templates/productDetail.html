@@ -6,43 +6,9 @@
   <meta charset="UTF-8">
   <title>productDetail</title>
   <link rel="stylesheet" href="../static/css/styles.css">
-<style>
-  /* -------------------- 이용자 상세페이지 파트 ----------------------- */
-
-  .detail-container {
-    display: grid;
-    grid-template-columns: 411px 421px; /*열 배치 크기*/
-    gap: 40px 35px; /*그리드 간격 row column*/
-    grid-template-rows: repeat(6, minmax(59px, auto));
-    justify-content: center;
-    padding: 20px;
-    align-items: start;
-  }
-
-  .detail-container .option-select{
-    background-image: url('../../../../../../Documents/GitHub/ZipUp/zipup1.0/src/main/resources/static/images/svg/optiongray.svg');
-    background-repeat: no-repeat;
-    background-color: white;
-    border: solid 1px;
-  }
-
-  .detail-container .product-image {
-    display: flex;
-    width: 411px;
-    height: 411px;
-    margin-top: 12px;
-    background-color: #dddddd;
-  }
-
-  .detail-container .right-section {
-    line-height: 40px;
-  }
-</style>
 </head>
 
-
 <th:block th:replace="~{layout/header :: header}"></th:block>
-
 
 <body>
 <!-- 전체 컨테이너 -->
@@ -78,7 +44,7 @@
 </div>
 
 <div class="bottom-section">
-  <button class="upload-detail-image">상세페이지 등록 <img src="../../../../../Documents/GitHub/ZipUp/zipup1.0/src/main/resources/static/images/svg/upload.svg" class="upload-icon"></button>
+  <button class="upload-detail-image">상세페이지 등록 <img src="/images/svg/upload.svg" class="upload-icon"></button>
 
   <div class="detail-image">상세페이지</div>
 </div>

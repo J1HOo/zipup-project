@@ -4,11 +4,29 @@
 
 <mapper namespace="com.teamzipup.zipup.mapper.UserMapper">
 
-    <select id="" >
-        SELECT * FROM
+    <!-- 유저 전체 목록  -->
+    <select id="getAllUsers" resultType="com.teamzipup.zipup.dto.User">
+        SELECT id, username, password, role
+        FROM user
     </select>
 
+    <!-- 이용자 판매자 회원가입  -->
+    <insert id="insertUser" parameterType="com.teamzipup.zipup.dto.User">
+        INSERT INTO USER (ROLE, EMAIL, PASSWORD, ADDRESS, USERNAME, PHONENUMBER)
+        VALUES (#{role}, #{email}, #{password}, #{address}, #{userName}, #{phoneNumber});
+    </insert>
 
+    <insert id="insertSeller" parameterType="com.teamzipup.zipup.dto.User">
+        INSERT INTO USER (ROLE, EMAIL, PASSWORD, COMPANYNAME, BUSINESSNUMBER, PHONENUMBER, ADDRESS)
+        VALUES (#{role}, #{email}, #{password}, #{companyName}, #{businessNumber}, #{phoneNumber}, #{address});
+    </insert>
+
+    <!-- 이용자 로그인  -->
+    <select id="findByEmail" parameterType="string" resultType="com.teamzipup.zipup.dto.User">
+        SELECT id, email, password, role
+        FROM user
+        WHERE email = #{eamail}
+    </select>
 
 
 

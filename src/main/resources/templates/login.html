@@ -8,16 +8,21 @@
 </head>
 <body>
 <div class="zipup-container">
+  <a th:href="@{/}">
   <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
+    <a/>
 
-  <input type="email" placeholder="이메일" class="zipup-input" />
-  <input type="password" placeholder="비밀번호" class="zipup-input" />
+  <form action="/login" method="post">
+  <input name="email" type="email" placeholder="이메일" class="zipup-input" required/>
+  <input name="password" type="password" placeholder="비밀번호" class="zipup-input" required/>
   <button class="zipup-btn">로그인</button>
+    <p th:if="${error}" class="login-error-message" th:text="${error}"> </p>
+  </form>
 
   <div class="login-button-group">
-    <a href="../find/findPassword.html">비밀번호 찾기</a>
-    <a href="../find/findId.html">아이디 찾기</a>
-    <a href="../signup/signup.html">회원가입</a>
+    <a href="../find/email">아이디 찾기</a>
+    <a href="../find/password">비밀번호 찾기</a>
+    <a href="../signup">회원가입</a>
   </div>
 </div>
 <div th:replace="layout/footer :: footer"></div>
