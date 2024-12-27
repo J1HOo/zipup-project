@@ -5,12 +5,13 @@
 <head>
   <meta charset="UTF-8">
   <title>productDetail</title>
-  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
+<body>
 <th:block th:replace="~{layout/header :: header}"></th:block>
 
-<body>
+
 <!-- 전체 컨테이너 -->
 <div class="detail-container">
   <!-- 좌측 상단 그리드 -->
@@ -30,44 +31,50 @@
     <div class="options">
       <label class="zipup-label">옵션 선택</label>
 
-      <div class="option-select">
 
-        <select>
+      <div class="option-select-btn">
+        <select class="option-select">
           <option value="" disabled selected>색상을 선택하세요</option>
+          <option data-add="0" value="블루">블루</option>
+          <option data-add="0" value="블랙">블랙</option>
         </select>
-        <input type="text" class="option-select-btn" placeholder="색상을 선택하세요">
       </div>
 
+      <div class="option-select">
+        <div class="option-select-btn" tabindex="0">
+          <span class="option-select-text">색상을 선택하세요</span>
+          <img src="/images/svg/optiongray.svg" class="ui-option-icon">
+        </div>
+        <ul class="option-select-list">
+          <li value="블루" class="option-list">블루</li>
+          <li value="블랙" class="option-list">블랙</li>
+        </ul>
+<!--        <select class="option-select-origin">-->
+<!--          <option value="" selected="selected">색상을 선택하세요</option>-->
+<!--          <option value="블루">블루</option>-->
+<!--          <option value="블랙">블랙</option>-->
+<!--        </select>-->
+      </div>
+
+        <select class="option-select">
+          <option value="" disabled selected>색상을 선택하세요</option>
+          <option data-add="0" value="아이보리">아이보리</option>
+          <option data-add="0" value="옐로우">옐로우</option>
+        </select>
+        <span tabindex="0" class="option-select-btn" role="button" aria-haspopup="listbox" aria-label="색상 옵션 선택">
+          <span class="option-select-text">색상을 선택하세요</span>
+        </span>
       <button class="zipup-btn">바로 구매</button>
     </div>
   </div>
 </div>
 
 <div class="bottom-section">
-  <button class="upload-detail-image">상세페이지 등록 <img src="/images/svg/upload.svg" class="upload-icon"></button>
-
   <div class="detail-image">상세페이지</div>
 </div>
-</div>
+
 </body>
 
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">
-      <img src="/images/svg/logo.svg" alt="ZIP UP" class="hf-logo">
-    </div>
-    <div class="footer-info">
-      <p><strong>(주)집업</strong></p>
-      <p>대표이사: 집업 | 사업자등록번호: 123-45-67891</p>
-      <p>주소: 서울 강남구 테헤란로 4길 6 남도빌딩 5층</p>
-      <p>호스팅사업자: 집업</p>
-      <p>통신판매업 신고번호: 2024-서울강남-1234</p>
-    </div>
-    <div class="footer-contact">
-      <p><strong>고객센터 1525-2525</strong></p>
-      <p>운영시간: AM 10:00 ~ PM 17:00 (주말 및 공휴일 휴무)</p>
-      <p>고객문의: zipup.cs@gmail.com</p>
-    </div>
-  </div>
-</footer>
+<th:block th:replace="~{layout/footer :: footer}"></th:block>
+
 </html>
