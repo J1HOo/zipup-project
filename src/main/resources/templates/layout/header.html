@@ -20,11 +20,10 @@
 
     <!-- 유저 -->
     <div th:if="${user != null}">
+      <a th:if="${user.role == 'seller'}" th:href="@{/product/add}">상품 생성</a> <!-- seller -->
       <a th:href="@{/mypage}">마이페이지</a>
       <a th:href="@{/logout}">로그아웃</a>
 
-      <!-- seller -->
-      <a th:if="${user.role == 'seller'}" th:href="@{/product/add}">상품 생성</a>
     </div>
   </div>
 </header>

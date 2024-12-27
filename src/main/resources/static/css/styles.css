@@ -99,10 +99,10 @@ body, html, h1, h2, p, div, a {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
-.nav a.active {
+.nav a.hover {
     color: #3E71FE;
 }
 .nav::after {
@@ -126,7 +126,13 @@ body, html, h1, h2, p, div, a {
 .auth-links a {
     text-decoration: none;
     color: black;
-    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.auth-links a:hover {
+    color: #3e71fe;
 }
 
 .content {
