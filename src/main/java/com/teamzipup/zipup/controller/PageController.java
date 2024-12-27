@@ -2,6 +2,7 @@
 package com.teamzipup.zipup.controller;
 import com.teamzipup.zipup.dto.User;
 import com.teamzipup.zipup.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PageController {
-
     @GetMapping("/login")
     public String login() {
         return "login"; // login.html로 이동
@@ -47,5 +47,4 @@ public class PageController {
     public String productAdd() {
         return "productAdd"; // productAdd.html로 이동
     }
-
 }

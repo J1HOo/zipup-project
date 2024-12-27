@@ -20,14 +20,24 @@ public class AuthController {
         this.userService = userService;
     }
 
-    // 회원가입 파트
-    @PostMapping("/")
-    public String index(@ModelAttribute("user") User user, Model model) {
-        user.setRole("user");
+    // 이용자 회원가입
+    @PostMapping("/signup/user")
+    public String userSignup(@ModelAttribute("user") User user, Model model) {
+        user.setRole("user"); // 이용자 역할 설정
         userService.insertUser(user);
-        model.addAttribute("msg", "회원가입 성공");
+        model.addAttribute("msg", "회원가입 성공 (이용자)");
         return "index";
     }
+
+    // 판매자 회원가입
+    @PostMapping("/signup/seller")
+    public String sellerSignup(@ModelAttribute("user") User user, Model model) {
+        user.setRole("seller"); // 판매자 역할 설정
+        userService.insertSeller(user);
+        model.addAttribute("msg", "회원가입 성공 (판매자)");
+        return "index";
+    }
+
 
     // 로그인 파트
     @GetMapping("/")
