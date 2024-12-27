@@ -18,7 +18,7 @@
           class="zipup-logo"
   />
   </a>
-  <form action="/signup/seller" method="post">
+  <form class= "signup-form" action="/signup/seller" method="post">
   <label class="zipup-label">로그인 정보</label>
   <input
           type="text"
@@ -28,6 +28,7 @@
           required
   />
   <input
+          id="password"
           type="password"
           name="password"
           placeholder="비밀번호"
@@ -66,28 +67,11 @@
   />
   <br />
 
-  <button class="zipup-btn" onclick="Register(seller)">가입 완료</button>
+  <button class="zipup-btn" type="submit">가입 완료</button>
   </form>
 </div>
 
-
-<script>
-  function Register(s) {
-    s.preventDefault();
-
-    const password = document.getElementById("password").value;
-
-    constpasswordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-
-    if (!passwordRegExp.test(password)) {
-      alert("비밀번호가 정규식에 부합하지 않습니다.");
-      return false;
-    }
-
-    alert("회원가입이 완료되었습니다.");
-  }
-</script>
-
+<script src="/js/signUp.js"></script>
 <div th:replace="layout/footer :: footer"></div>
 </body>
 </html>
