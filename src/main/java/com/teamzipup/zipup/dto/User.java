@@ -16,7 +16,7 @@ public class User {
     @Id                                                                    // primary key 표기로 id는 맨 위에 작성
     @GeneratedValue(strategy = GenerationType.IDENTITY)   // auto_increment 회원 가입 시 번호 자동적으로 증가
 
-    private int id;                         // '숫자(주소) 아이디'
+    private long id;                         // '숫자(주소) 아이디'
     private String role;	          // '등급부여(이용자=user,판매자=seller)'
     private String email;                 // '회원 이메일 (고유값)
     private String password;            // '비밀번호'

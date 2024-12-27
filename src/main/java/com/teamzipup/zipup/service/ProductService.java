@@ -8,7 +8,7 @@ public interface ProductService {
     // 판매자 제품 등록
     void insertProduct(
             long id,
-            String sellerId,
+            long sellerId,
             MultipartFile image,
             String productName,
             int price,

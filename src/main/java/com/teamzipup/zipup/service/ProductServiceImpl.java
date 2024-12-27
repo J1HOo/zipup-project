@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void insertProduct(
             long id,
-            String sellerId,
+            long sellerId,
             MultipartFile image,
             String productName,
             int price,
