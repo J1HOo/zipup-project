@@ -275,7 +275,6 @@ body, html, h1, h2, p, div, a {
     display: grid;
     grid-template-columns: 411px 421px; /*열 배치 크기*/
     gap: 40px 35px; /*그리드 간격 row column*/
-    grid-template-rows: repeat(6, minmax(59px, auto));
     justify-content: center;
     padding: 20px;
     align-items: start;
@@ -293,8 +292,8 @@ body, html, h1, h2, p, div, a {
 }
 
 .seller-detail-container .seller-option-add-button1, .seller-detail-container .seller-option-add-button2 {
-    width: 41px;
-    height: 41px;
+    width: 42px;
+    height: 42px;
     background-color: white;
     border-radius: 8px;
     border: solid 1px #999999;
@@ -309,11 +308,11 @@ body, html, h1, h2, p, div, a {
 .seller-detail-container:has(.seller-optionColor:focus) .seller-option-add-button1 {
     border: solid 2px #3e71fe;
     outline: none;
-    content: url("../images/svg/plusBlue.svg")
+    content: url("/images/svg/plusBlue.svg")
 }
 
 .seller-detail-container:has(.seller-optionColor:focus) .plus-icon1 {
-    content: url("../images/svg/plusBlue.svg")
+    content: url("/images/svg/plusBlue.svg")
 }
 
 .seller-detail-container:has(.seller-optionSize:focus) .seller-option-add-button2 {
@@ -322,7 +321,7 @@ body, html, h1, h2, p, div, a {
 }
 
 .seller-detail-container:has(.seller-optionSize:focus) .plus-icon2 {
-    content: url("../images/svg/plusBlue.svg")
+    content: url("/images/svg/plusBlue.svg")
 }
 
 
@@ -341,15 +340,42 @@ body, html, h1, h2, p, div, a {
     border: solid 2px #3e71fe;
     color: #3e71fe;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.seller-detail-container .detail-image {
+.seller-detail-container .product-image #image {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    width: 411px;
+    height: 411px;
+}
+
+.seller-detail-container .product-image span {
+    pointer-events: none;
+}
+
+
+.seller-detail-container .description-image {
     width: 868px;
     height: auto;
     background-color: white;
     color: white;
     text-align: center;
 }
+
+.seller-detail-container .bottom-section .upload-description-image #description {
+    opacity: 0;
+    width: 868px;
+    height: 51px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.seller-detail-container .bottom-section .upload-description-image span {
+    pointer-events: none;
+}
+
 
 .seller-detail-container .right-section {
     line-height: 40px;
@@ -367,27 +393,38 @@ body, html, h1, h2, p, div, a {
     background-color: #D9D9D9;
     border: none;
     border-radius: 5px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.seller-detail-container .category-btn:focus {
+.seller-detail-container .category input[type="radio"] {
+    display: none;
+}
+
+.seller-detail-container .category input[type="radio"]:checked + .category-btn {
     background-color: #3e71fe;
     color: white;
 }
 
-.seller-detail-container .upload-detail-image {
+.seller-detail-container .upload-description-image {
     width: 868px;
     height: 51px;
     background-color: black;
-    color: white;
     border: none;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
-    cursor: pointer;
+    text-decoration: none;
 }
 
-.seller-detail-container .upload-detail-image:hover {
+.seller-detail-container .upload-description-image:hover {
     background-color: #333;
 }
 
@@ -408,10 +445,11 @@ body, html, h1, h2, p, div, a {
     background-color: white;
 }
 
-.seller-detail-container .not-option-btn:focus {
+.seller-detail-container .option-container .not-option-btn:focus {
     background-color: #3e71fe;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 /* -------------------- 이용자 상세페이지 파트 ----------------------- */
