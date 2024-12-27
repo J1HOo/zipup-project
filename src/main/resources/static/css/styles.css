@@ -261,12 +261,12 @@ body, html, h1, h2, p, div, a {
     height: 100%;
     text-decoration: none; /* 링크 밑줄 제거 */
     color: inherit; /* 부모 색상 상속 */
+}
 /*--------------------- 이용자 회원 가입 파트 ------------------- */
-    .userSignup-error-msg {
-        color: red;
-        font-size: 0.9em;
-        display: none; /* 기본적으로 메시지를 숨김 */
-    }
+
+
+
+
 /* -------------------- 판매자 생성 파트 ----------------------- */
 
 .seller-detail-container {
