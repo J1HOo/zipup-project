@@ -1,6 +1,6 @@
 
 package com.teamzipup.zipup.controller;
-import com.teamzipup.zipup.model.User;
+import com.teamzipup.zipup.dto.User;
 import com.teamzipup.zipup.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PageController {
 
-    private final UserService userService;
-
-    public PageController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @GetMapping("/")
-    public String index() {
-        return "index"; // index.html로 이동
-    }
-
     @GetMapping("/login")
     public String login() {
         return "login"; // login.html로 이동
@@ -32,6 +21,7 @@ public class PageController {
     public String signup() {
         return "signup"; // signup.html로 이동
     }
+
 
     @GetMapping("/signup/user")
     public String userSignup() {
@@ -58,11 +48,4 @@ public class PageController {
         return "productAdd"; // productAdd.html로 이동
     }
 
-    @PostMapping("/")
-    public String index(@ModelAttribute("user") User user, Model model) {
-        user.setRole("user");
-        userService.insertUser(user);
-        model.addAttribute("msg", "회원가입 성공");
-        return "index";
-    }
 }

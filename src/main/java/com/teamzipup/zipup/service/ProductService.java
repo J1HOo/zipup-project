@@ -1,6 +1,6 @@
 package com.teamzipup.zipup.service;
 
-import com.teamzipup.zipup.model.Product;
+import com.teamzipup.zipup.dto.Product;
 
 import java.util.List;
 import java.util.Map;
