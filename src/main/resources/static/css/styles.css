@@ -210,6 +210,19 @@ body, html, h1, h2, p, div, a {
     margin-top: 10px;
 }
 
+/* -------------------- 아이디, 비밀번호 찾기 파트 ----------------------- */
+
+.findResult-text {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.findResult-text span {
+    font-size: 25px;
+    font-weight: bold;
+    color: #3E71FE;
+}
+
 /* -------------------- 회원가입 선택 파트 ----------------------- */
 
 .signup-container {

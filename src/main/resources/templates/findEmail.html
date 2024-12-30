@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이메일 찾기</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="zipup-container">
+    <a th:href="@{/}">
+        <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
+    </a>
+
+<form action="/find/email" method="post">
+    <label class="zipup-label" for="userName">회원 이름</label>
+    <input class="zipup-input" type="text" id="userName" name="userName" required>
+    <label class="zipup-label" for="password">비밀번호</label>
+    <input class ="zipup-input" type="password" id="password" name="password" required>
+    <button class="zipup-btn" type="submit">이메일 찾기</button>
+    <p th:if="${error}" class="login-error-message" th:text="${error}"> </p>
+</form>
+</div>
+
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>
