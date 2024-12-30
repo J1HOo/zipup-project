@@ -11,7 +11,7 @@
     </select>
 
     <!-- 이용자 판매자 회원가입  -->
-    <insert id="insertUser" parameterType="com.teamzipup.zipup.dto.User">
+    <insert id="insertUser" >
         INSERT INTO USER (ROLE, EMAIL, PASSWORD, ADDRESS, USERNAME, PHONENUMBER)
         VALUES (#{role}, #{email}, #{password}, #{address}, #{userName}, #{phoneNumber});
     </insert>
@@ -29,7 +29,7 @@
     </select>
 
     <!-- 아이디(이메일) 중복 확인 -->
-    <select id="existsByEmail" resultType="int">
+    <select id="existsByEmail" >
         SELECT EXISTS (
             SELECT 1 FROM user WHERE email = #{email}
         )

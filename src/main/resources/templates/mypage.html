@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div th:replace="layout/header :: header"></div>
+
+<div class="mypage-container">
+    <table>
+        <tr>
+            <th>아이디</th>
+            <td th:text="${user.id}"></td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td th:text="${user.password}"></td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td th:text="${user.address}"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td th:text="${user.userName}"></td>
+        </tr>
+        <tr>
+            <th>휴대폰 번호</th>
+            <td th:text="${user.phoneNumber}"></td>
+        </tr>
+    </table>
+
+</div>
+
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>
