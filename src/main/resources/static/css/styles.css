@@ -289,6 +289,13 @@ body, html, h1, h2, p, div, a {
     align-items: start;
 }
 
+.seller-detail-container .bottom-section{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+}
+
 .seller-detail-container .seller-optionColor, .seller-detail-container .seller-optionSize {
     width: 360px;
     height: 42px;
@@ -343,6 +350,8 @@ body, html, h1, h2, p, div, a {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .seller-detail-container .product-image:hover {
@@ -358,6 +367,9 @@ body, html, h1, h2, p, div, a {
     cursor: pointer;
     width: 411px;
     height: 411px;
+    top: 0;
+    left: 0;
+    display: none;
 }
 
 .seller-detail-container .product-image span {
@@ -365,12 +377,10 @@ body, html, h1, h2, p, div, a {
 }
 
 
-.seller-detail-container .description-image {
-    width: 868px;
+.seller-detail-container .description-preview {
+    width: 100%;
     height: auto;
-    background-color: white;
-    color: white;
-    text-align: center;
+    display: none;
 }
 
 .seller-detail-container .bottom-section .upload-description-image #description {
@@ -379,6 +389,8 @@ body, html, h1, h2, p, div, a {
     height: 51px;
     cursor: pointer;
     position: absolute;
+    display: none;
+    text-align: center;
 }
 
 .seller-detail-container .bottom-section .upload-description-image span {
@@ -459,6 +471,16 @@ body, html, h1, h2, p, div, a {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.seller-detail-container .preview img {
+    position: absolute;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 10; /*이미지 텍스트 위로 올라오게 설정*/
+    top: 0;
+    left: 0;
 }
 
 /* -------------------- 이용자 상세페이지 파트 ----------------------- */

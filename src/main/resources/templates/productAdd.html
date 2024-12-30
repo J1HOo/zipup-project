@@ -18,9 +18,10 @@
         <div class="left-section">
             <div class="image">
                 <label for="image" class="zipup-label">이미지</label>
-                <div class="product-image">
-                    <input type="file" id="image" name="image" required>
-                    <span>이미지 박스를 클릭하여<br> 이미지를 추가해주세요</span>
+                <div class="product-image" id="product-image">
+                    <input type="file" id="image" name="image" required accept="/images/product_images/*">
+                    <div class="preview" id="preview"></div>
+                    <span id="instruction">이미지 박스를 클릭하여<br> 이미지를 추가해주세요</span>
                 </div>
             </div>
         </div>
@@ -78,17 +79,17 @@
         <!-- 하단 그리드 -->
         <div class="bottom-section">
 
-            <div class="upload-description-image">
+            <div class="upload-description-image" id="description-image">
                 <input type="file" id="description" name="description">
                 <span>상세페이지 등록<img src="/images/svg/upload.svg" class="upload-icon" alt="업로드아이콘"></span>
             </div>
             <!-- 상세페이지 이미지 등록하기 전에는 형태 나타나지 않게 보여짐-->
-            <div class="description-image" hidden>상세페이지</div>
-
+            <div class="description-preview" id="description-preview" hidden>상세페이지</div>
         </div>
     </div>
 </form>
 
 <th:block th:replace="~{layout/footer :: footer}"></th:block>
+<script src="/js/product.js"></script>
 </body>
 </html>
