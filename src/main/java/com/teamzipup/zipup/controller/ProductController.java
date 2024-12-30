@@ -3,6 +3,7 @@ package com.teamzipup.zipup.controller;
 import com.teamzipup.zipup.dto.Product;
 import com.teamzipup.zipup.service.ProductService;
 import com.teamzipup.zipup.dto.User;
+import com.teamzipup.zipup.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,12 +14,52 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 @Controller
 public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private UserService userService;
+
+
+    @GetMapping("/")
+    public String mainPage(HttpSession session, Model model) {
+        // 로그인 사용자 확인
+        User loginUser = (User) session.getAttribute("loginUser");
+
+        if (loginUser != null) {
+            model.addAttribute("user", loginUser);
+        }
+
+        // 상품 리스트 가져오기
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+
+        return "index"; // 메인 페이지
+    }
+
+    @GetMapping("/products")
+    public String productListPage(Model model) {
+        // 전체 상품 리스트 페이지
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "productList"; // 슬라이드 방식 리스트 페이지
+    }
+
+    @GetMapping("/products/category")
+    public String categoryPage(@RequestParam("category") String category, Model model) {
+        // 특정 카테고리 상품 리스트
+        List<Product> products = productService.getProductsByCategory(category);
+        model.addAttribute("products", products);
+        model.addAttribute("selectedCategory", category);
+        return "productList"; // 카테고리별 템플릿
+    }
+
 
     @PostMapping("/product/add")
     public String productAdd(@RequestParam("productName") String productName,
@@ -65,8 +106,27 @@ public class ProductController {
             return "redirect:/";
         }
 
+        // 판매자 정보 조회
+        User seller = userService.getUserById(product.getSellerId());
+        if (seller == null) {
+            model.addAttribute("error", "판매자 정보를 찾을 수 없습니다.");
+            return "index";
+        }
+
+        // 옵션 처리
+        List<String> option1List = product.getOption1() != null ? List.of(product.getOption1().split(",")) : List.of();
+        List<String> option2List = product.getOption2() != null ? List.of(product.getOption2().split(",")) : List.of();
+
         model.addAttribute("product", product);
+        model.addAttribute("companyName", seller.getCompanyName());
+        model.addAttribute("option1List", option1List);
+        model.addAttribute("option2List", option2List);
+        model.addAttribute("description", product.getDescription());
+
+
         return "productDetail"; // 상세 페이지
     }
 }
+
+
 

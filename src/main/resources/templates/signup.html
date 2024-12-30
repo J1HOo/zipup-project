@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +8,7 @@
 </head>
 <body>
 <div class="zipup-container">
-  <a th:href="@{/}">
-  <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
-  </a>
+  <div th:replace="~{layout/subHeader :: subHeader}"></div>
 
   <div class="signup-container">
     <div class="signup-button-box">
@@ -36,6 +34,6 @@
     </div>
   </div>
 </div>
-<div th:replace="layout/footer :: footer"></div>
+<div th:replace="~{layout/footer :: footer}"></div>
 </body>
 </html>
