@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,14 +11,21 @@
 </head>
 <body>
 <div class="zipup-container">
-  <a th:href="@{/}">
-    <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" >
-  </a>
+  <div th:replace="~{layout/subHeader :: subHeader}"></div>
   <div class="userSignupContainer">
     <form class="signup-form" action="/signup/user" method="post">
       <h1 class="zipup-label">로그인 정보</h1>
       <!-- 아이디(이메일) -->
-      <input class="zipup-input" type="email" id="email" name="email" placeholder="이메일" required ><br>
+      <div class="signup-form-group">
+      <input class="signup-inputEmail" type="email" id="email" name="email" placeholder="이메일" required ><br>
+      <button type="button" id="check-email-btn" class="signup-checkBtn">중복 확인</button><br>
+      </div>
+
+      <!-- 에러 메시지 표시 -->
+      <div class="signup-error-message">
+        <p th:if="${error}" >[[${error}]]</p>
+      </div>
+
       <!-- 비밀번호 -->
       <input class="zipup-input" type="password" id="password" name="password" placeholder="비밀번호" required /><br>
 
@@ -35,7 +42,7 @@
     </form>
   </div>
 </div>
-<div th:replace="layout/footer :: footer"></div>
+<div th:replace="~{layout/footer :: footer}"></div>
 
 <script src="/js/signUp.js"></script>
 </body>

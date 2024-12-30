@@ -13,6 +13,9 @@ public interface UserMapper {
     //일반 이용자 저장하기
     void insertUser(User user);
 
+    // 아이디(이메일) 중복 여부 확인 메서드
+    int existsByEmail(String email);
+
     //판매자 저장
     void insertSeller(User user);
 

@@ -14,6 +14,9 @@ public interface UserService {
     // 일반 이용자 저장하는 기능
     void insertUser(User user);
 
+    // 아이디(이메일) 중복 확인 메서드
+    boolean isEmailTaken(String email);
+
     // 판매자 저장
     void insertSeller(User user);
 
