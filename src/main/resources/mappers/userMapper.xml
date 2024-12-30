@@ -28,6 +28,12 @@
         WHERE email = #{eamail}
     </select>
 
+    <!-- 아이디(이메일) 중복 확인 -->
+    <select id="existsByEmail" resultType="int">
+        SELECT EXISTS (
+            SELECT 1 FROM user WHERE email = #{email}
+        )
+    </select>
 
 
 </mapper>

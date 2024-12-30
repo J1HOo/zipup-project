@@ -264,8 +264,45 @@ body, html, h1, h2, p, div, a {
 }
 /*--------------------- 이용자 회원 가입 파트 ------------------- */
 
+.signup-form-group {
+    position: relative; /* 버튼을 입력 필드 안으로 배치하기 위해 필요 */
+    display: flex;
+    align-items: center;
+    width: 407px; /* 기존 signup-input의 너비와 동일 */
+    margin-bottom: 15px;
+}
 
-
+.signup-checkBtn {
+    position: absolute;
+    right: 10px;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+.signup-inputEmail{
+    width: 407px;
+    height: 42px;
+    padding-right: 100px; /* 버튼 공간 확보 */
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.signup-inputEmail:focus{
+    outline: none;
+    border: 2px solid #3e71fe;
+}
+.signup-error-message{
+    color: red;
+    margin-bottom: 20px;
+}
 
 /* -------------------- 판매자 생성 파트 ----------------------- */
 

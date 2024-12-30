@@ -19,9 +19,15 @@ public class UserServiceImpl implements UserService {
         return List.of();
     }
 
+    /*이용자 회원가입 */
     @Override
     public void insertUser(User user) {
         userMapper.insertUser(user);
+    }
+    /*아이디(이메일) 중복 확인*/
+    @Override
+    public boolean isEmailTaken(String email) {
+        return userMapper.existsByEmail(email)>0;
     }
 
     @Override
