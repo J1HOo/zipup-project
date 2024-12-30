@@ -34,17 +34,26 @@ public class ProductServiceImpl implements ProductService {
         String imageName = image.getOriginalFilename();
         String descriptionName = description.getOriginalFilename();
 
-        //이미지 저장할 경로 + 이미지 이름
-        File imageFile = new File(productDir + imageName);
-        File descriptionFile = new File(descriptionDir + descriptionName);
+        // 이미지 파일 이름 중복 제거
+        String uniqueImageName = UUID.randomUUID() + "_" + imageName;
+        String uniqueDescriptionName = UUID.randomUUID() + "_" + descriptionName;
 
+        //이미지 저장할 경로 + 이미지 이름
+        File imageFile = new File(productDir + uniqueImageName);
+        File descriptionFile = new File(descriptionDir + uniqueDescriptionName);
 
         try {
-            if (!imageFile.getParentFile().exists()) imageFile.getParentFile().mkdirs();
-            if (!descriptionFile.getParentFile().exists()) descriptionFile.getParentFile().mkdirs();
+            if (!imageFile.getParentFile().exists()) {
+                 imageFile.getParentFile().mkdirs();
+            }
+            if (!descriptionFile.getParentFile().exists()) {
+                descriptionFile.getParentFile().mkdirs();
+            }
 
             image.transferTo(imageFile);
+            System.out.println("이미지 저장 완료: " + imageFile.getAbsolutePath());
             description.transferTo(descriptionFile);
+            System.out.println("상세페이지 저장 완료: " + descriptionFile.getAbsolutePath());
 
             Product product = new Product();
             product.setSellerId(sellerId); // 여기서 sellerId 설정
@@ -54,15 +63,16 @@ public class ProductServiceImpl implements ProductService {
             product.setOption2(option2);
             product.setOption3(option3);
             product.setCategory(category);
-            product.setImage("/images/product_images/" + imageName);
-            product.setDescription("/images/product_description/" + descriptionName);
+            product.setImage("/images/product_images/" + uniqueImageName);
+            product.setDescription("/images/description_images/" + uniqueDescriptionName);
 
             productMapper.insertProduct(product); // DB에 데이터 삽입
 
             System.out.println("상품 등록 성공: " + product);
             return product.getId(); // 생성된 상품 ID 반환
         } catch (IOException e) {
-            throw new RuntimeException("파일 저장 실패: " + e.getMessage(), e);
+            System.err.println("파일 저장 실패: " + e.getMessage());
+            throw new RuntimeException("파일 저장 실패", e);
         }
     }
 
