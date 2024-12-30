@@ -66,6 +66,8 @@ body, html, h1, h2, p, div, a {
 
 .zipup-error {
     color: red;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 /* -------------------- 헤더, 푸터 파트 ----------------------- */
@@ -202,12 +204,6 @@ body, html, h1, h2, p, div, a {
 
 .login-button-group a:hover {
     color: #3e71fe;
-}
-
-.login-error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
 }
 
 /* -------------------- 아이디, 비밀번호 찾기 파트 ----------------------- */
