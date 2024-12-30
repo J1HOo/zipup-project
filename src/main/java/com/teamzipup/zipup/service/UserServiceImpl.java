@@ -51,4 +51,8 @@ public class UserServiceImpl implements UserService {
         }
         return user.getPassword();
     }
+
+    public User getUserById(long id) {
+        return userMapper.findById(id);
+    }
 }
