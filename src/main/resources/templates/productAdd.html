@@ -53,14 +53,17 @@
             <div class="options">
                 <label class="zipup-label">상품 옵션 설정</label>
                 <div class="option-container">
-                    <label for="option1">
-                        <input type="text" id="option1" name="option1" class="seller-optionColor"
-                               placeholder="색상 옵션 추가">
-                    </label>
-                    <button type="button" class="seller-option-add-button1">
-                        <span><img src="/images/svg/plusGray.svg" class="plus-icon1"></span>
-                    </button>
+                    <div id="color-option-container">
+                        <label for="option1">
+                            <input type="text" id="option1" name="option1" class="seller-optionColor"
+                                   placeholder="색상 옵션 추가">
+                        </label>
+                        <button type="button" class="seller-option-add-button1">
+                            <span><img src="/images/svg/plusGray.svg" class="plus-icon1"></span>
+                        </button>
+                    </div>
 
+                    <div id="size-option-container">
                     <label for="option2">
                         <input type="text" id="option2" name="option2" class="seller-optionSize"
                                placeholder="사이즈 옵션 추가"/>
@@ -68,6 +71,7 @@
                     <button type="button" class="seller-option-add-button2">
                         <span><img src="/images/svg/plusGray.svg" class="plus-icon2"></span>
                     </button>
+                    </div>
 
                     <button type="button" id="option3" name="option3" class="not-option-btn">옵션 없음</button>
 
