@@ -19,9 +19,15 @@ public class UserServiceImpl implements UserService {
         return List.of();
     }
 
+    /*이용자 회원가입 */
     @Override
     public void insertUser(User user) {
         userMapper.insertUser(user);
+    }
+    /*아이디(이메일) 중복 확인*/
+    @Override
+    public boolean isEmailTaken(String email) {
+        return userMapper.existsByEmail(email)>0;
     }
 
     @Override
@@ -32,5 +38,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail(String email) {
         return userMapper.findByEmail(email);
+    }
+
+    @Override
+    public String findEmail(String userName, String password) {
+        User user = userMapper.findByUserNameAndPassword(userName, password);
+        if (user == null) {
+            throw new RuntimeException("회원 정보를 찾을 수 없습니다.");
+        }
+        return user.getEmail();
+    }
+
+    @Override
+    public String findPassword(String email, String phoneNumber) {
+        User user = userMapper.findByEmailAndPhoneNumber(email, phoneNumber);
+        if (user == null) {
+            throw new RuntimeException("회원 정보를 찾을 수 없습니다.");
+        }
+        return user.getPassword();
     }
 }

@@ -6,11 +6,11 @@ import com.teamzipup.zipup.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Map;
+
 
 @Controller
 public class AuthController {
@@ -24,11 +24,23 @@ public class AuthController {
     // 이용자 회원가입
     @PostMapping("/signup/user")
     public String userSignup(@ModelAttribute("user") User user, Model model) {
+        if (userService.isEmailTaken(user.getEmail())) {
+            model.addAttribute("error", "중복된 이메일입니다. 다른 이메일을 입력하세요.");
+            return "userSignup"; // 회원가입 페이지로 다시 이동
+        }
         user.setRole("user"); // 이용자 역할 설정
         userService.insertUser(user);
         model.addAttribute("msg", "회원가입 성공 (이용자)");
         return "redirect:/";
     }
+    // 이메일 중복체크
+    @GetMapping("/check-email")
+    @ResponseBody
+    public Map<String, Boolean> checkEmail(@RequestParam String email) {
+        boolean isTaken = userService.isEmailTaken(email);
+        return Map.of("isTaken", isTaken);
+    }
+
 
     // 판매자 회원가입
     @PostMapping("/signup/seller")
@@ -77,6 +89,54 @@ public class AuthController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }
+
+    // 이메일 찾기
+    @GetMapping("/find/email")
+    public String findEmailForm() {
+        return "findEmail";
+    }
+
+    @PostMapping("/find/email")
+    public String findEmail(
+        @RequestParam("userName") String userName,
+        @RequestParam("password") String password,
+        Model model,
+        RedirectAttributes redirectAttributes
+    ) {
+        try {
+            String email = userService.findEmail(userName, password);
+            model.addAttribute("email", email);
+            return "findEmailResult";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "회원 정보를 찾을 수 없습니다.");
+            return "redirect:/find/email";
+        }
+    }
+
+    // 비밀번호 찾기
+    @GetMapping("/find/password")
+    public String findPasswordForm() {
+        return "findPassword";
+    }
+
+    @PostMapping("/find/password")
+    public String findPassword(
+        @RequestParam("email") String email,
+        @RequestParam("phoneNumber") String phoneNumber,
+        Model model,
+        RedirectAttributes redirectAttributes
+    ) {
+        try {
+            String password = userService.findPassword(email, phoneNumber);
+            model.addAttribute("password", password);
+            return "findPasswordResult";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "회원 정보를 찾을 수 없습니다.");
+            return "redirect:/find/password";
+        }
+    }
+
+
 }

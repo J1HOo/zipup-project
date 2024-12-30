@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이메일 찾기 결과</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="zipup-container">
+    <a th:href="@{/}">
+        <img src="/images/svg/logo.svg" alt="ZIP UP" class="zipup-logo" />
+    </a>
+<p th:if="${email != null}" class="findResult-text">
+    회원님의 이메일은 <span th:text="${email}"></span> 입니다.
+</p>
+<p th:if="${email == null}" class="findResult-text">
+    회원 정보를 찾을 수 없습니다.
+</p>
+
+    <button class="zipup-btn" onclick="location.href='/login' ">로그인 하러 가기</button>
+</div>
+
+<div th:replace="layout/footer :: footer"></div>
+</body>
+</html>
