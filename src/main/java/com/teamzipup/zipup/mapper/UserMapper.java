@@ -25,4 +25,7 @@ public interface UserMapper {
     // 비밀번호 찾기
     User findByEmailAndPhoneNumber(String email, String phoneNumber);
 
+    // 아이디로 조회
+    User findById(long id);
+
 }

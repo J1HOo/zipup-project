@@ -35,7 +35,7 @@
     </select>
 
     <!-- 상품 조회 -->
-    <select id="findById" resultType="com.teamzipup.zipup.dto.Product">
+    <select id="findById">
         SELECT *
         FROM product
         WHERE id = #{id}

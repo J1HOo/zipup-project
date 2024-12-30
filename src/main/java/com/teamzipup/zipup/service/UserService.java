@@ -25,4 +25,7 @@ public interface UserService {
 
     // 비밀번호 찾기
     String findPassword(String email, String phoneNumber);
+
+    // 아이디로 조회
+    User getUserById(long id);
 }
