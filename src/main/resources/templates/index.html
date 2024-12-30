@@ -12,10 +12,13 @@
 
 <div class="content">
   <main>
-    <section>
-      <h1>집업 배너</h1>
-      <p>메인 추가로 구현</p>
-    </section>
+    <!-- 배너 -->
+    <div class="banner">
+      <img src="/images/img/mainBanner.png" alt="mainBanner" style="width: 100%; height: auto;">
+    </div>
+
+    <!-- 상품 리스트 -->
+    <div th:replace="~{productList :: productList}"></div>
   </main>
 </div>
 

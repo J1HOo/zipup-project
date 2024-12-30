@@ -4,7 +4,16 @@
 
 <mapper namespace="com.teamzipup.zipup.mapper.ProductMapper">
 
-    <!--***************판매자 생성 페이지(product/add)*******************-->
+    <!-- 전체 상품 리스트 -->
+    <select id="findAll">
+        SELECT * FROM product
+    </select>
+
+    <!-- 카테고리별 상품 리스트 -->
+    <select id="findByCategory">
+        SELECT * FROM product WHERE category = #{category}
+    </select>
+
     <!-- 판매자 제품 등록 하기 -->
     <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO PRODUCT (SELLERID, IMAGE, CATEGORY, PRODUCTNAME, PRICE, OPTION1, OPTION2, OPTION3, DESCRIPTION)
@@ -12,7 +21,6 @@
     </insert>
 
 
-    <!--***************이용자 상세 페이지(product/detail)*******************-->
     <!-- 제품 색상 옵션 데이터 불러오기 -->
     <select id="optionColor">
         SELECT OPTION1

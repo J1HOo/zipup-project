@@ -17,6 +17,16 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
+    public List<Product> getAllProducts() {
+        return productMapper.findAll();
+    }
+
+    @Override
+    public List<Product> getProductsByCategory(String category) {
+        return productMapper.findByCategory(category);
+    }
+
+    @Override
     public long insertProduct(
         long sellerId,
         MultipartFile image,
@@ -67,6 +77,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    // 상품 판매자 조회
     @Override
     public Product getProductById(long id) {
         return productMapper.findById(id);

@@ -27,6 +27,40 @@ public class ProductController {
     private UserService userService;
 
 
+    @GetMapping("/")
+    public String mainPage(HttpSession session, Model model) {
+        // 로그인 사용자 확인
+        User loginUser = (User) session.getAttribute("loginUser");
+
+        if (loginUser != null) {
+            model.addAttribute("user", loginUser);
+        }
+
+        // 상품 리스트 가져오기
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+
+        return "index"; // 메인 페이지
+    }
+
+    @GetMapping("/products")
+    public String productListPage(Model model) {
+        // 전체 상품 리스트 페이지
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "productList"; // 슬라이드 방식 리스트 페이지
+    }
+
+    @GetMapping("/products/category")
+    public String categoryPage(@RequestParam("category") String category, Model model) {
+        // 특정 카테고리 상품 리스트
+        List<Product> products = productService.getProductsByCategory(category);
+        model.addAttribute("products", products);
+        model.addAttribute("selectedCategory", category);
+        return "productList"; // 카테고리별 템플릿
+    }
+
+
     @PostMapping("/product/add")
     public String productAdd(@RequestParam("productName") String productName,
                              @RequestParam("price") int price,
