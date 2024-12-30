@@ -87,12 +87,11 @@ public class ProductController {
         model.addAttribute("companyName", seller.getCompanyName());
         model.addAttribute("option1List", option1List);
         model.addAttribute("option2List", option2List);
+        model.addAttribute("description", product.getDescription());
+
 
         return "productDetail"; // 상세 페이지
-
-
     }
-
 }
 
 
