@@ -21,4 +21,11 @@ public interface UserMapper {
 
     // 로그인
     User findByEmail(String email);
+
+    // 아이디 찾기
+    User findByUserNameAndPassword(String userName, String password);
+
+    // 비밀번호 찾기
+    User findByEmailAndPhoneNumber(String email, String phoneNumber);
+
 }

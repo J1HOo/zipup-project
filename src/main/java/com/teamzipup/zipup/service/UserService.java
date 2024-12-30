@@ -22,4 +22,10 @@ public interface UserService {
 
     // 로그인
     User findByEmail(String email);
+
+    // 이메일 찾기
+    String findEmail(String username, String password);
+
+    // 비밀번호 찾기
+    String findPassword(String email, String phoneNumber);
 }
