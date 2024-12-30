@@ -33,4 +33,22 @@ public class UserServiceImpl implements UserService {
     public User findByEmail(String email) {
         return userMapper.findByEmail(email);
     }
+
+    @Override
+    public String findEmail(String userName, String password) {
+        User user = userMapper.findByUserNameAndPassword(userName, password);
+        if (user == null) {
+            throw new RuntimeException("회원 정보를 찾을 수 없습니다.");
+        }
+        return user.getEmail();
+    }
+
+    @Override
+    public String findPassword(String email, String phoneNumber) {
+        User user = userMapper.findByEmailAndPhoneNumber(email, phoneNumber);
+        if (user == null) {
+            throw new RuntimeException("회원 정보를 찾을 수 없습니다.");
+        }
+        return user.getPassword();
+    }
 }
