@@ -79,4 +79,50 @@ public class AuthController {
         session.invalidate();
         return "redirect:/";
     }
+
+    // 이메일 찾기
+    @GetMapping("/find/email")
+    public String findEmailForm() {
+        return "findEmail";
+    }
+
+    @PostMapping("/find/email")
+    public String findEmail(
+        @RequestParam("userName") String userName,
+        @RequestParam("password") String password,
+        Model model,
+        RedirectAttributes redirectAttributes
+    ) {
+        try {
+            String email = userService.findEmail(userName, password);
+            model.addAttribute("email", email);
+            return "findEmailResult";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "회원 정보를 찾을 수 없습니다.");
+            return "redirect:/find/email";
+        }
+    }
+
+    // 비밀번호 찾기
+    @GetMapping("/find/password")
+    public String findPasswordForm() {
+        return "findPassword";
+    }
+
+    @PostMapping("/find/password")
+    public String findPassword(
+        @RequestParam("email") String email,
+        @RequestParam("phoneNumber") String phoneNumber,
+        Model model,
+        RedirectAttributes redirectAttributes
+    ) {
+        try {
+            String password = userService.findPassword(email, phoneNumber);
+            model.addAttribute("password", password);
+            return "findPasswordResult";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "회원 정보를 찾을 수 없습니다.");
+            return "redirect:/find/password";
+        }
+    }
 }

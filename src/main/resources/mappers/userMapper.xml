@@ -28,6 +28,16 @@
         WHERE email = #{eamail}
     </select>
 
+    <!-- 이름과 비밀번호로 사용자 찾기 -->
+    <select id="findByUserNameAndPassword" parameterType="map" resultType="com.teamzipup.zipup.dto.User">
+        SELECT * FROM USER WHERE USERNAME = #{userName} AND PASSWORD = #{password}
+    </select>
+
+    <!-- 이메일과 전화번호로 사용자 찾기 -->
+    <select id="findByEmailAndPhoneNumber" parameterType="map" resultType="com.teamzipup.zipup.dto.User">
+        SELECT * FROM USER WHERE EMAIL = #{email} AND PHONENUMBER = #{phoneNumber}
+    </select>
+
 
 
 </mapper>
