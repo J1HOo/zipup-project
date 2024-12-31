@@ -27,10 +27,12 @@
             <th>주소</th>
             <td th:text="${user.address}"></td>
         </tr>
+        <div th:if="${session.loginUser.role == 'user'}">
         <tr>
             <th>이름</th>
             <td th:text="${user.userName}"></td>
         </tr>
+        </div>
         <tr>
             <th>휴대폰 번호</th>
             <td th:text="${user.phoneNumber}"></td>
