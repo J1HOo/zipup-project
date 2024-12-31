@@ -28,15 +28,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public long insertProduct(
-        long sellerId,
-        MultipartFile image,
-        String productName,
-        int price,
-        String option1,
-        String option2,
-        String option3,
-        String category,
-        MultipartFile description) {
+            long sellerId,
+            MultipartFile image,
+            String productName,
+            int price,
+            String option1,
+            String option2,
+            String option3,
+            String category,
+            MultipartFile description) {
         String productDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_images/";
         String descriptionDir = System.getProperty("user.dir") + "/src/main/resources/static/images/description_images/";
 
@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
 
         try {
             if (!imageFile.getParentFile().exists()) {
-                 imageFile.getParentFile().mkdirs();
+                imageFile.getParentFile().mkdirs();
             }
             if (!descriptionFile.getParentFile().exists()) {
                 descriptionFile.getParentFile().mkdirs();

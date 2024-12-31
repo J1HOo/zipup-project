@@ -469,6 +469,10 @@ input[type=number] {
     pointer-events: none;
 }
 
+.seller-detail-container .product #price {
+    appearance: none; -moz-appearance: textfield;
+}/*수정 중*/
+
 .seller-detail-container .description-preview {
     width: 853px;
     height: auto;
@@ -750,4 +754,22 @@ input[type=number] {
     font-size: 18px;
     font-weight: bold;
     color: #3e71fe;
+}
+
+
+/* -------------------- 구매 완료 페이지 -------------------- */
+
+.pc-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; /* 행 크기 자동 조정 */
+    gap: 40px 35px; /*그리드 간격 row column*/
+}
+
+.pc-container .logo {
+    display: flex;
+    justify-items: center;
+    width: 158px;
+    height: 33px;
+    text-align: center;
 }
