@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class ProductController {
@@ -123,6 +125,10 @@ public class ProductController {
             model.addAttribute("error", "판매자 정보를 찾을 수 없습니다.");
             return "index";
         }
+
+        String formattedPrice = NumberFormat.getNumberInstance(Locale.KOREA).format(product.getPrice());
+        model.addAttribute("product", product);
+        model.addAttribute("formattedPrice", formattedPrice);
 
         List<String> option1List = product.getOption1() != null ? List.of(product.getOption1().split(",")) : List.of();
         List<String> option2List = product.getOption2() != null ? List.of(product.getOption2().split(",")) : List.of();

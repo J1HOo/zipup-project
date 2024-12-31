@@ -33,7 +33,7 @@
             </div>
 
             <div class="product-price">
-                <p class="won"><span class="price" th:text="${product.price}"></span>원</p>
+                <p class="won"><span class="price" th:text="${formattedPrice}"></span>원</p>
             </div>
 
             <hr class="line">
@@ -57,7 +57,7 @@
                 <div class="total-price">
                     <label class="option-label">총 상품 금액</label>
                     <div class="total-price-div">
-                        <p class="won"><span class="price" th:text="${product.price}"></span>원</p></div>
+                        <p class="won"><span class="price" th:text="${formattedPrice}"></span>원</p></div>
                 </div>
 
                 <button type="submit" class="zipup-btn">바로 구매</button>
