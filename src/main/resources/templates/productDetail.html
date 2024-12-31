@@ -17,7 +17,7 @@
         <!-- 좌측 상단 그리드 -->
         <div class="left-section">
             <div class="image">
-                <img th:src="@{${product.image}}" alt="상품 이미지" class="product-image"/>
+                <img th:src="${product.image != null && product.image.startsWith('/images/product_images/') && product.image != '' ? product.image : '/images/img/default.png'}" alt="상품 이미지" class="product-image"/>
             </div>
         </div>
 
@@ -44,12 +44,12 @@
                 <!-- 색상 옵션 -->
                 <div class="option-select-btn">
                     <label class="option-label">옵션 선택</label>
-                    <select class="option-select">
+                    <select class="option-select" id="color-select">
                         <option value="" disabled selected>색상을 선택하세요</option>
                         <option th:each="option : ${option1List}" th:value="${option}" th:text="${option}"></option>
                     </select>
 
-                    <select class="option-select">
+                    <select class="option-select" id="size-select">
                         <option value="" disabled selected>사이즈를 선택하세요</option>
                         <option th:each="option : ${option2List}" th:value="${option}" th:text="${option}"></option>
                     </select>
@@ -57,7 +57,8 @@
                 <div class="total-price">
                     <label class="option-label">총 상품 금액</label>
                     <div class="total-price-div">
-                        <p class="won"><span class="price" th:text="${formattedPrice}"></span>원</p></div>
+                        <p class="won"><span class="price" th:text="${formattedPrice}"></span>원</p>
+                    </div>
                 </div>
 
                 <button type="submit" class="zipup-btn">바로 구매</button>
@@ -68,11 +69,12 @@
         <!-- 하단 상세 이미지 -->
         <div class="bottom-section">
             <div class="detail-image">
-                <img class="description" th:src="@{${product.description}}" alt="상세 이미지"/>
+                <img class="description" th:src="${product.description}" alt="상세 이미지"/>
             </div>
         </div>
     </div>
     <div th:replace="~{layout/footer :: footer}"></div>
+    <script src="/js/product.js"></script>
 </form>
 </body>
 </html>

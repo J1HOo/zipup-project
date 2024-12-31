@@ -11,14 +11,14 @@
 <body>
 <th:block th:replace="~{layout/header :: header}"></th:block>
 <!-- 전체 컨테이너 -->
-<form action="/product/add" method="post" enctype="multipart/form-data">
+<form action="/product/add" method="post" enctype="multipart/form-data" class="form-p-add">
     <div class="seller-detail-container">
         <!-- 좌측 상단 그리드 -->
         <div class="left-section">
             <div class="image">
                 <label for="image" class="zipup-label">이미지</label>
                 <div class="product-image" id="product-image">
-                    <input type="file" id="image" name="image" required accept="/images/product_images/*">
+                    <input type="file" id="image" name="image">
                     <div class="preview" id="preview"></div>
                     <span id="instruction">이미지 박스를 클릭하여<br> 이미지를 추가해주세요<br> <br> 411px X 411px <br> or <br> 1:1 비율 권장</span>
                 </div>
@@ -27,8 +27,8 @@
         <!-- 우측 상단 그리드 -->
         <div class="right-section">
             <label class="zipup-label">카테고리</label>
-            <div class="category">
-                <input type="radio" id="outer" name="category" value="outer" required>
+            <div class="category" id="category">
+                <input type="radio" id="outer" name="category" value="outer">
                 <label for="outer" class="category-btn">OUTER</label>
                 <input type="radio" id="top" name="category" value="top">
                 <label for="top" class="category-btn">TOP</label>
@@ -41,17 +41,16 @@
             <div class="product">
                 <label class="zipup-label">상품 등록</label>
                 <label for="productName">
-                    <input type="text" id="productName" name="productName" class="zipup-input" placeholder="상품명"
-                           required/>
+                    <input type="text" id="productName" name="productName" class="zipup-input" placeholder="상품명" required>
                 </label>
                 <label for="price">
-                    <input type="number" id="price" name="price" class="zipup-input" placeholder="상품가격" required/>
+                    <input type="number" id="price" name="price" class="zipup-input" placeholder="상품가격" required>
                 </label>
             </div>
 
             <div class="options">
                 <label class="zipup-label">상품 옵션 설정</label>
-                <div class="option-container">
+                <div class="option-container" id="option-container">
                     <div id="color-option-container">
                         <label for="option1">
                             <input type="text" id="option1" name="option1" class="seller-optionColor"
