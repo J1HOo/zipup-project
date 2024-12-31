@@ -215,3 +215,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+/* ********************** number 버튼 관련********************** */
+document.addEventListener("DOMContentLoaded", () => {
+    const priceInput = document.getElementById("price");
+
+    // 숫자가 아닌 문자를 제거하는 이벤트 리스너
+    priceInput.addEventListener("input", (event) => {
+        const input = event.target.value;// 숫자만 남김
+        event.target.value = input.replace(/[^0-9]/g, ""); // 입력 필드에 숫자만 설정
+    });
+});

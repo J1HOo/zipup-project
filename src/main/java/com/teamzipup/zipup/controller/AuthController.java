@@ -124,5 +124,19 @@ public class AuthController {
         }
     }
 
+    // 마이 페이지
+    @GetMapping("/mypage")
+    public String myPage(Model model, HttpSession session){
+
+        User loggedInUser = (User) session.getAttribute("loginUser");
+        if(loggedInUser != null){
+            model.addAttribute("user", loggedInUser);
+            System.out.println("Logged-in user: " + loggedInUser);
+        }else{
+            model.addAttribute("user", new User());
+        }
+        return "mypage";
+    }
+
 
 }

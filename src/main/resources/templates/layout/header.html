@@ -21,7 +21,7 @@
     <!-- 유저 -->
     <div th:if="${session.loginUser != null}">
       <a th:if="${session.loginUser.role == 'seller'}" th:href="@{/product/add}">상품 생성</a> <!-- seller -->
-      <a th:href="@{/}">마이페이지</a>
+      <a th:href="@{/mypage}">마이페이지</a>
       <a th:href="@{/logout}">로그아웃</a>
 
     </div>
