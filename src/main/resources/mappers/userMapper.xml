@@ -5,7 +5,7 @@
 <mapper namespace="com.teamzipup.zipup.mapper.UserMapper">
 
     <!-- 유저 전체 목록  -->
-    <select id="getAllUsers" resultType="com.teamzipup.zipup.dto.User">
+    <select id="getAllUsers">
         SELECT id, username, password, role
         FROM user
     </select>
@@ -16,14 +16,14 @@
         VALUES (#{role}, #{email}, #{password}, #{address}, #{userName}, #{phoneNumber});
     </insert>
 
-    <insert id="insertSeller" parameterType="com.teamzipup.zipup.dto.User">
+    <insert id="insertSeller">
         INSERT INTO USER (ROLE, EMAIL, PASSWORD, COMPANYNAME, BUSINESSNUMBER, PHONENUMBER, ADDRESS)
         VALUES (#{role}, #{email}, #{password}, #{companyName}, #{businessNumber}, #{phoneNumber}, #{address});
     </insert>
 
     <!-- 이용자 로그인  -->
-    <select id="findByEmail" parameterType="string" resultType="com.teamzipup.zipup.dto.User">
-        SELECT id, email, password, role
+    <select id="findByEmail">
+        SELECT id, email, password, role, address, userName, phoneNumber, companyName, businessNumber
         FROM user
         WHERE email = #{eamail}
     </select>
@@ -35,12 +35,12 @@
         )
     </select>
     <!-- 이름과 비밀번호로 사용자 찾기 -->
-    <select id="findByUserNameAndPassword" parameterType="map" resultType="com.teamzipup.zipup.dto.User">
+    <select id="findByUserNameAndPassword">
         SELECT * FROM USER WHERE USERNAME = #{userName} AND PASSWORD = #{password}
     </select>
 
     <!-- 이메일과 전화번호로 사용자 찾기 -->
-    <select id="findByEmailAndPhoneNumber" parameterType="map" resultType="com.teamzipup.zipup.dto.User">
+    <select id="findByEmailAndPhoneNumber">
         SELECT * FROM USER WHERE EMAIL = #{email} AND PHONENUMBER = #{phoneNumber}
     </select>
 

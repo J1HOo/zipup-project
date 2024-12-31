@@ -14,7 +14,7 @@
     <table>
         <tr>
             <th>아이디</th>
-            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
         </tr>
         <tr>
             <th>비밀번호</th>
@@ -32,8 +32,15 @@
             <th>휴대폰 번호</th>
             <td th:text="${user.phoneNumber}"></td>
         </tr>
+        <tr>
+            <th>사업자 등록 번호</th>
+            <td th:text="${user.businessNumber}"></td>
+        </tr>
+        <tr>
+            <th>상호명</th>
+            <td th:text="${user.companyName}"></td>
+        </tr>
     </table>
-
 </div>
 
 <div th:replace="layout/footer :: footer"></div>

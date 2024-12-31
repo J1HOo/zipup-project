@@ -142,9 +142,10 @@ public class AuthController {
     @GetMapping("/mypage")
     public String myPage(Model model, HttpSession session){
 
-        Object loggedInUser = session.getAttribute("loggedInUser");
+        User loggedInUser = (User) session.getAttribute("loginUser");
         if(loggedInUser != null){
             model.addAttribute("user", loggedInUser);
+            System.out.println("Logged-in user: " + loggedInUser);
         }else{
             model.addAttribute("user", new User());
         }
