@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <title>구매 완료</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
-<body>
 
+<body>
+<th:block th:replace="~{layout/header :: header}"></th:block>
+<form action="/" method="get">
+    <!-- 전체 컨테이너 -->
+    <div class="pc-container">
+        <img src="/images/img/logo.png" class="logo">
+        <div class="completed">
+            <img class="shopping_icon" src="/images/svg/shopping.svg">
+            <span class="completed-text">주문이 완료되었습니다</span>
+            <hr class="pc-hr">
+        </div>
+        <div class="announcement">
+            <div class="shipping-info">
+                <div class="info-grid">
+                    <label class="zipup-label">배송정보</label>
+                    <hr class="info-hr">
+                    <label class="info-title">받는 분</label>
+                    <label class="info" th:text="${userName}">홍길동</label>
+                    <label class="info-title">배송지</label>
+                    <label class="info" th:text="${address}">서울특별시 강남구</label>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="info-grid">
+                    <label class="zipup-label">주문정보</label>
+                    <hr class="info-hr">
+                    <label class="info" th:text="${companyName}">ABC 상사</label>
+                    <label class="info" th:text="${productName}">노트북</label>
+                    <span class="info-option" th:text="${option1} + ' / ' + ${option2}">블랙 / 16GB RAM</span>
+                    <label class="info-price" th:text="${price}">1,200,000원</label>
+                </div>
+            </div>
+            <a href="/" class="zipup-btn">홈 화면 가기</a>
+        </div>
+    </div>
+</form>
 </body>
 </html>

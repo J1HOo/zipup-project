@@ -108,6 +108,8 @@ public class ProductController {
     @GetMapping("/product/detail/{id}")
     public String productDetail(@PathVariable("id") long id, HttpSession session, Model model) {
         Product product = productService.getProductById(id);
+
+
         User loginUser = (User) session.getAttribute("loginUser");
 
         if (loginUser == null) {
@@ -140,5 +142,6 @@ public class ProductController {
         model.addAttribute("description", product.getDescription());
 
         return "productDetail"; // 상세 페이지
+
     }
 }
