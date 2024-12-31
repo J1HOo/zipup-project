@@ -12,9 +12,9 @@ public interface ProductService {
 
     // 상품 카테고리 리스트
     List<Product> getProductsByCategory(String category);
-    
+
     // 판매자 제품 등록
-        long insertProduct(
+    long insertProduct(
             long sellerId,
             MultipartFile image,
             String productName,
@@ -24,10 +24,8 @@ public interface ProductService {
             String option3,
             String category,
             MultipartFile description
-        );
+    );
 
     // 상품 ID로 조회
     Product getProductById(long id);
-
-
 }
