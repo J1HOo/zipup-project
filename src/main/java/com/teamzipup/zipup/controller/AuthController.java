@@ -51,20 +51,6 @@ public class AuthController {
         return "redirect:/";
     }
 
-
-    // 로그인 파트
-    @GetMapping("/")
-    public String index(HttpSession session, Model model) {
-        User logginUser = (User) session.getAttribute("loginUser");
-
-        if (logginUser != null) {
-            model.addAttribute("user", logginUser);
-        }
-
-        return "index";
-    }
-
-
     @PostMapping("/login")
     public String login(
         @RequestParam("email") String email,

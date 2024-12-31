@@ -5,11 +5,11 @@
     </a>
   </div>
   <nav class="nav">
-    <a th:href="@{/all}" class="active">ALL</a>
-    <a th:href="@{/outer}">OUTER</a>
-    <a th:href="@{/top}">TOP</a>
-    <a th:href="@{/bottom}">BOTTOM</a>
-    <a th:href="@{/acc}">ACC</a>
+    <a th:href="@{/}" th:classappend="${selectedCategory == null} ? 'active' : ''">ALL</a>
+    <a th:href="@{/products/category(category='OUTER')}" th:classappend="${selectedCategory == 'OUTER'} ? 'active' : ''">OUTER</a>
+    <a th:href="@{/products/category(category='TOP')}" th:classappend="${selectedCategory == 'TOP'} ? 'active' : ''">TOP</a>
+    <a th:href="@{/products/category(category='BOTTOM')}" th:classappend="${selectedCategory == 'BOTTOM'} ? 'active' : ''">BOTTOM</a>
+    <a th:href="@{/products/category(category='ACC')}" th:classappend="${selectedCategory == 'ACC'} ? 'active' : ''">ACC</a>
   </nav>
   <div class="auth-links">
     <!-- 비회원 -->

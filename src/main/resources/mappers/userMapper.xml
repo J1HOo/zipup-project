@@ -11,7 +11,7 @@
     </select>
 
     <!-- 이용자 판매자 회원가입  -->
-    <insert id="insertUser" >
+    <insert id="insertUser">
         INSERT INTO USER (ROLE, EMAIL, PASSWORD, ADDRESS, USERNAME, PHONENUMBER)
         VALUES (#{role}, #{email}, #{password}, #{address}, #{userName}, #{phoneNumber});
     </insert>
@@ -42,6 +42,13 @@
     <!-- 이메일과 전화번호로 사용자 찾기 -->
     <select id="findByEmailAndPhoneNumber">
         SELECT * FROM USER WHERE EMAIL = #{email} AND PHONENUMBER = #{phoneNumber}
+    </select>
+
+    <!-- 유저 ID로 조회 -->
+    <select id="findById">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
     </select>
 
 
