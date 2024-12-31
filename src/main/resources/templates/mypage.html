@@ -77,14 +77,16 @@
             <th>휴대폰 번호</th>
             <td th:text="${user.phoneNumber}"></td>
         </tr>
+        <div th:if="${session.loginUser.role == 'seller'}">
         <tr>
             <th>사업자 등록 번호</th>
-            <td th:text="${user.businessNumber}"></td>
+            <td  th:text="${user.businessNumber}"></td>
         </tr>
         <tr>
             <th>상호명</th>
             <td th:text="${user.companyName}"></td>
         </tr>
+        </div>
     </table>
 </div>
 
