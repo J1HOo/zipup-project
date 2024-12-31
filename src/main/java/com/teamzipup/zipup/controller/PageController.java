@@ -43,7 +43,7 @@ public class PageController {
         return "productDetail"; // productDetail.html로 이동
     }
 
-    @GetMapping("purchase/completed")
+    @GetMapping("/purchase/completed")
     public String purchaseCompleted() {
         return "purchaseCompleted"; // purchaseCompleted.html로 이동
     }

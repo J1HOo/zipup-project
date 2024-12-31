@@ -101,6 +101,7 @@ public class ProductController {
     public String productDetail(@PathVariable("id") long id, Model model) {
         // 상품 조회
         Product product = productService.getProductById(id);
+        System.out.println(product);
         if (product == null) {
             model.addAttribute("error", "상품을 찾을 수 없습니다.");
             return "redirect:/";
@@ -123,10 +124,9 @@ public class ProductController {
         model.addAttribute("option2List", option2List);
         model.addAttribute("description", product.getDescription());
 
-
         return "productDetail"; // 상세 페이지
+
     }
 }
-
 
 
