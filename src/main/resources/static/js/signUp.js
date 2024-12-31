@@ -81,3 +81,18 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 });
+
+/******************** 메인 페이지 검색 결과 가리기************************************************/
+document.addEventListener("DOMContentLoaded", function() {
+    var productList = document.getElementById("productList");
+    var noResults = document.getElementById("noResults");
+
+    // 결과가 있을 때만 productList 보이기
+    if (document.querySelectorAll('th\\:block').length > 0) {
+        productList.style.display = "block";  // 결과가 있으면 리스트 보이기
+        noResults.style.display = "none";     // 결과 없으면 "결과가 없습니다" 숨기기
+    } else {
+        productList.style.display = "none";   // 결과 없으면 리스트 숨기기
+        noResults.style.display = "block";   // "결과가 없습니다" 보이기
+    }
+});

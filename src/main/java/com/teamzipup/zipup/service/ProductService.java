@@ -28,4 +28,6 @@ public interface ProductService {
 
     // 상품 ID로 조회
     Product getProductById(long id);
+
+    List<Product> searchProducts(String productName, String category, Integer minPrice, Integer maxPrice);
 }

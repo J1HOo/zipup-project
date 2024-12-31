@@ -19,4 +19,6 @@ public interface ProductMapper {
 
     // 상품 ID로 조회
     Product findById(long id);
+
+    List<Product> searchProducts(String productName, String category, Integer minPrice, Integer maxPrice);
 }

@@ -41,19 +41,26 @@
             <!-- 옵션 선택 -->
             <div class="options">
 
-                <!-- 색상 옵션 -->
                 <div class="option-select-btn">
                     <label class="option-label">옵션 선택</label>
-                    <select class="option-select" id="color-select">
+
+                    <!-- 색상 옵션 -->
+                    <select class="option-select"
+                            th:disabled="${option1List == null || option1List.isEmpty() || (option1List.size() == 1 && option1List[0] == '')}">
                         <option value="" disabled selected>색상을 선택하세요</option>
                         <option th:each="option : ${option1List}" th:value="${option}" th:text="${option}"></option>
                     </select>
 
-                    <select class="option-select" id="size-select">
+                    <!-- 사이즈 옵션 -->
+                    <select class="option-select"
+                            th:disabled="${option2List == null || option2List.isEmpty() || (option2List.size() == 1 && option2List[0] == '')}">
                         <option value="" disabled selected>사이즈를 선택하세요</option>
                         <option th:each="option : ${option2List}" th:value="${option}" th:text="${option}"></option>
                     </select>
                 </div>
+
+
+
                 <div class="total-price">
                     <label class="option-label">총 상품 금액</label>
                     <div class="total-price-div">
