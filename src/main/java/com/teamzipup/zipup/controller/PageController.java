@@ -33,11 +33,6 @@ public class PageController {
         return "productList"; // productList.html로 이동
     }
 
-    @GetMapping("/product/add")
-    public String productAdd() {
-        return "productAdd"; // productAdd.html로 이동
-    }
-
     @GetMapping("/product/detail")
     public String productDetail() {
         return "productDetail"; // productDetail.html로 이동
