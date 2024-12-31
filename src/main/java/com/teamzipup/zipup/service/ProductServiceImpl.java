@@ -92,4 +92,9 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(long id) {
         return productMapper.findById(id);
     }
+
+    @Override
+    public List<Product> searchProducts(String productName, String category, Integer minPrice, Integer maxPrice) {
+        return productMapper.searchProducts(productName, category, minPrice, maxPrice);
+    }
 }

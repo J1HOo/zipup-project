@@ -144,4 +144,25 @@ public class ProductController {
         return "productDetail"; // 상세 페이지
 
     }
+
+    @GetMapping("/productDetail")
+    public String searchProducts
+            (@RequestParam(required = false) String productName,
+             @RequestParam(required = false) String category,
+             @RequestParam(required = false) Integer minPrice,
+             @RequestParam(required = false) Integer maxPrice, Model model ) {
+
+        List<Product> products = productService.searchProducts(productName, category, minPrice, maxPrice);
+
+        model.addAttribute("products", products);
+
+        return "productList";
+    }
+
+    @GetMapping("/product/{id}")
+    public String viewProductDetail(@PathVariable Long id, Model model) {
+        Product product = productService.getProductById(id); // ID로 상품 조회
+        model.addAttribute("product", product);
+        return "productDetail";
+    }
 }

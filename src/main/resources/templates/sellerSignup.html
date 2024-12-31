@@ -12,15 +12,19 @@
 <body>
 <div class="zipup-container">
   <div th:replace="~{layout/subHeader :: subHeader}"></div>
-  <form class= "signup-form" action="/signup/seller" method="post">
-  <label class="zipup-label">로그인 정보</label>
-  <input
-          type="text"
-          name="email"
-          placeholder="이메일"
-          class="zipup-input"
-          required
-  />
+  <form class="signup-form" action="/signup/seller" method="post">
+    <label class="zipup-label">로그인 정보</label>
+    <div class="signup-form-group">
+      <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="이메일"
+              class="zipup-input"
+              required
+      />
+      <button type="button" id="check-email-btn" class="signup-checkBtn">중복 확인</button>
+    </div>
   <input
           id="password"
           type="password"

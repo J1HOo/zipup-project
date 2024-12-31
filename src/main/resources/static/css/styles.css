@@ -812,3 +812,8 @@ input[type=number] {
     height: 33px;
     text-align: center;
 }
+
+/* ------------------- 메인 페이지 검색 결과 가리기 --------------- */
+#productList {
+    display: none;
+}

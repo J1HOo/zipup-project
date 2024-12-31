@@ -15,6 +15,24 @@
     <!-- 배너 -->
     <div class="banner">
       <img src="/images/img/mainBanner.png" alt="mainBanner" style="width: 100%; height: auto;">
+      <form action="/productList" method="get">
+        <input type="text" name="productName" placeholder="상품명 검색" />
+        <input type="text" name="category" placeholder="카테고리" />
+        <input type="number" name="minPrice" placeholder="최소 가격" />
+        <input type="number" name="maxPrice" placeholder="최대 가격" />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+
+    <div id="productList">
+      <ul>
+        <th:block th:each="product : ${products}">
+          <li>
+            <a th:href="@{/product/{id}(id=${product.id})}" th:text="${product.productName}"></a> <!-- 상품명을 클릭하면 상세페이지로 -->
+            <span th:text="${product.price}"></span>
+          </li>
+        </th:block>
+      </ul>
     </div>
 
     <!-- 상품 리스트 -->
