@@ -145,20 +145,19 @@ public class ProductController {
 
     }
 
-    @GetMapping("/productDetail")
+    /* 상품 검색 */
+    @GetMapping("/productList")
     public String searchProducts
-            (@RequestParam(required = false) String productName,
-             @RequestParam(required = false) String category,
-             @RequestParam(required = false) Integer minPrice,
-             @RequestParam(required = false) Integer maxPrice, Model model ) {
+            (@RequestParam(required = false) String productName, Model model ) {
 
-        List<Product> products = productService.searchProducts(productName, category, minPrice, maxPrice);
+        List<Product> products = productService.searchProducts(productName);
 
         model.addAttribute("products", products);
 
-        return "productList";
+        return "index";
     }
 
+    /* 상품 상세 페이지 이동 */
     @GetMapping("/product/{id}")
     public String viewProductDetail(@PathVariable Long id, Model model) {
         Product product = productService.getProductById(id); // ID로 상품 조회

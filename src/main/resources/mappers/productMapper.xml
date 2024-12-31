@@ -58,4 +58,11 @@
         WHERE p.ID = #{id}
     </select>
 
+    <!-- 상품 검색 -->
+    <select id="searchProducts">
+        select *
+        from product
+        where productName like concat('%', #{productName}, '%')
+    </select>
+
 </mapper>

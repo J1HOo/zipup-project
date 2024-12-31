@@ -2,6 +2,7 @@ package com.teamzipup.zipup.mapper;
 
 import com.teamzipup.zipup.dto.Product;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,5 +21,6 @@ public interface ProductMapper {
     // 상품 ID로 조회
     Product findById(long id);
 
-    List<Product> searchProducts(String productName, String category, Integer minPrice, Integer maxPrice);
+    // 상품 검색
+    List<Product> searchProducts(@Param("productName")String productName);
 }

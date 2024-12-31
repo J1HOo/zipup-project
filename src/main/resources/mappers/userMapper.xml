@@ -51,12 +51,6 @@
         WHERE id = #{id}
     </select>
 
-    <select id="searchProducts">
-        select *
-        from product
-        where productName like concat('%', #{productName}, '%')
-           or category like concat('%', #{category}, '%')
-           or price between #{minPrice} and #{maxPrice}
-    </select>
+
 
 </mapper>

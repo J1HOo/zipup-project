@@ -93,8 +93,9 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.findById(id);
     }
 
+    // 상품 검색
     @Override
-    public List<Product> searchProducts(String productName, String category, Integer minPrice, Integer maxPrice) {
-        return productMapper.searchProducts(productName, category, minPrice, maxPrice);
+    public List<Product> searchProducts(String productName) {
+        return productMapper.searchProducts(productName);
     }
 }
