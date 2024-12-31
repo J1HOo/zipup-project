@@ -6,12 +6,57 @@
     <title>마이페이지</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
+<style>
+    .mypage-container {
+        max-width: 1200px; /* 테이블 최대 너비 */
+        width: 90%; /* 화면 너비의 90% */
+        margin: auto;
+        background: #fff; /* 컨테이너 배경색 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        border-radius: 8px; /* 둥근 모서리 */
+        padding: 20px; /* 내부 여백 */
+    }
+
+    .mypage-table {
+        width: 100%; /* 테이블을 컨테이너 너비에 맞춤 */
+
+        table-layout: fixed; /* 셀 너비를 고정된 레이아웃으로 설정 */
+    }
+
+    .mypage-table th {
+        background-color: #ccc; /* 헤더 배경색 */
+        color: #000000; /* 헤더 글자 색 */
+        text-transform: uppercase; /* 대문자로 표시 */
+        font-weight: bold;
+        text-align: center; /* 헤더 텍스트 중앙 정렬 */
+        padding: 12px 15px;
+        white-space: nowrap; /* 줄 바꿈 방지 */
+        width: 20%; /* 헤더 너비를 적당히 설정 */
+    }
+
+    .mypage-table td {
+        color: #555; /* 셀 글자 색상 */
+        text-align: center; /* 셀 텍스트를 오른쪽 정렬 */
+        padding: 12px 15px; /* 내부 여백 */
+        width: 80%; /* td를 오른쪽으로 확장 */
+    }
+
+    .mypage-table tr:hover {
+        background-color: #f1f1f1; /* 호버 시 배경색 */
+    }
+    .mypage-h1{
+        margin-bottom: 20px;
+    }
+</style>
 <body>
 
 <div th:replace="layout/header :: header"></div>
 
 <div class="mypage-container">
-    <table>
+    <div class="mypage-h1">
+    <h1>마이페이지</h1>
+    </div>
+    <table class="mypage-table">
         <tr>
             <th>아이디</th>
             <td th:text="${user.email}"></td>
