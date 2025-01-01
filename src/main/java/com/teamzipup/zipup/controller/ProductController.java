@@ -164,4 +164,39 @@ public class ProductController {
         model.addAttribute("product", product);
         return "productDetail";
     }
+
+
+    @GetMapping("/purchase/completed/{id}")
+    public String purchaseCompleted(@PathVariable("id") Long id,
+                                    @RequestParam(required = false) String option1,
+                                    @RequestParam(required = false) String option2,
+                                    HttpSession session,
+                                    Model model) {
+        // 로그인 사용자 확인
+        User loginUser = (User) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            model.addAttribute("error", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
+        // 상품 데이터 조회
+        Product product = productService.getProductById(id);
+        if (product == null) {
+            model.addAttribute("error", "상품 정보를 찾을 수 없습니다.");
+            return "redirect:/";
+        }
+
+        // 모델에 데이터 추가
+        model.addAttribute("userName", loginUser.getUserName());
+        model.addAttribute("address", loginUser.getAddress());
+        model.addAttribute("companyName", userService.getUserById(product.getSellerId()).getCompanyName());
+        model.addAttribute("product", product);
+        model.addAttribute("option1", option1 != null ? option1 : "옵션 없음");
+        model.addAttribute("option2", option2 != null ? option2 : "옵션 없음");
+        model.addAttribute("formattedPrice", NumberFormat.getNumberInstance(Locale.KOREA).format(product.getPrice()));
+
+        return "purchaseCompleted";
+    }
+
+
 }

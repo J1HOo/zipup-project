@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>구매 완료</title>
+<!--    <link rel="stylesheet" href="/css/styles.css">-->
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+
 </head>
 
 <body>
@@ -24,22 +26,22 @@
                     <label class="zipup-label">배송정보</label>
                     <hr class="info-hr">
                     <label class="info-title">받는 분</label>
-                    <label class="info" th:text="${userName}">홍길동</label>
+                    <label class="info" th:text="${userName}"></label>
                     <label class="info-title">배송지</label>
-                    <label class="info" th:text="${address}">서울특별시 강남구</label>
+                    <label class="info" th:text="${address}"></label>
                 </div>
             </div>
             <div class="user-info">
                 <div class="info-grid">
                     <label class="zipup-label">주문정보</label>
                     <hr class="info-hr">
-                    <label class="info" th:text="${companyName}">ABC 상사</label>
-                    <label class="info" th:text="${productName}">노트북</label>
-                    <span class="info-option" th:text="${option1} + ' / ' + ${option2}">블랙 / 16GB RAM</span>
-                    <label class="info-price" th:text="${price}">1,200,000원</label>
+                    <label class="info" th:text="${companyName}"></label>
+                    <label class="info" th:text="${product.productName}"></label>
+                    <span class="info-option" th:text="${option1} + ' / ' + ${option2}"></span>
+                    <label class="info-price" th:text="${formattedPrice}"></label>
                 </div>
             </div>
-            <a href="/" class="zipup-btn">홈 화면 가기</a>
+            <button onclick="location.href='/' " class="zipup-btn">홈 화면 가기</button>
         </div>
     </div>
 </form>
