@@ -26,7 +26,8 @@ public class ProductController {
 
     /* 메인 페이지 */
     @GetMapping("/")
-    public String mainPage(HttpSession session, Model model) {
+    public String mainPage(@RequestParam(value = "category", required = false) String category, HttpSession session, Model model) {
+
         // 로그인 사용자 확인
         User loginUser = (User) session.getAttribute("loginUser");
         if (loginUser != null) {
@@ -34,10 +35,26 @@ public class ProductController {
         }
 
         // 상품 리스트 가져오기
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
+        // 카테고리가 없거나 비어 있으면 "All" 처리
+        List<Product> products;
 
-        return "index"; // 메인 페이지
+        if (category == null || category.isEmpty()) {
+            products = productService.getAllProducts(); // 전체 상품 리스트
+            category = "ALL"; // 빈 값은 ALL로 처리
+        } else {
+            products = productService.getProductsByCategory(category); // 특정 카테고리 상품 리스트
+        }
+
+        // 포맷된 가격 리스트 생성
+        List<String> formattedPrices = products.stream()
+            .map(product -> NumberFormat.getNumberInstance(Locale.KOREA).format(product.getPrice()))
+            .toList();
+
+        model.addAttribute("products", products);
+        model.addAttribute("selectedCategory", category); // 선택된 카테고리 전달
+        model.addAttribute("formattedPrices", formattedPrices);
+
+        return "index";
     }
 
     /* 전체 상품 리스트 페이지 */
@@ -45,7 +62,7 @@ public class ProductController {
     public String productListPage(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        return "productList"; // 상품 리스트 페이지
+        return "productList";
     }
 
     /* 카테고리별 상품 리스트 페이지 */
@@ -54,7 +71,7 @@ public class ProductController {
         List<Product> products = productService.getProductsByCategory(category);
         model.addAttribute("products", products);
         model.addAttribute("selectedCategory", category);
-        return "productList"; // 카테고리별 상품 리스트 템플릿
+        return "productList";
     }
 
     /* 상품 등록 페이지 */
@@ -72,7 +89,7 @@ public class ProductController {
             return "redirect:/";
         }
 
-        return "productAdd"; // 상품 등록 페이지
+        return "productAdd";
     }
 
     /* 상품 등록 요청 처리 */
@@ -100,7 +117,7 @@ public class ProductController {
             return "redirect:/product/detail/" + productId;
         } catch (Exception e) {
             model.addAttribute("error", "상품 등록 중 문제가 발생했습니다.");
-            return "productAdd"; // 상품 등록 페이지로 이동
+            return "productAdd";
         }
     }
 
@@ -114,7 +131,7 @@ public class ProductController {
 
         if (loginUser == null) {
             model.addAttribute("error", "로그인이 필요합니다.");
-            return "redirect:/login"; // 비회원은 로그인 페이지로 리디렉션
+            return "redirect:/login"; // 비회원은 로그인 페이지로
         }
 
         if (product == null) {
@@ -129,8 +146,9 @@ public class ProductController {
         }
 
         String formattedPrice = NumberFormat.getNumberInstance(Locale.KOREA).format(product.getPrice());
-        model.addAttribute("product", product);
         model.addAttribute("formattedPrice", formattedPrice);
+
+        model.addAttribute("product", product);
 
         List<String> option1List = product.getOption1() != null ? List.of(product.getOption1().split(",")) : List.of();
         List<String> option2List = product.getOption2() != null ? List.of(product.getOption2().split(",")) : List.of();
@@ -141,7 +159,7 @@ public class ProductController {
         model.addAttribute("option2List", option2List);
         model.addAttribute("description", product.getDescription());
 
-        return "productDetail"; // 상세 페이지
+        return "productDetail";
 
     }
 
@@ -197,6 +215,4 @@ public class ProductController {
 
         return "purchaseCompleted";
     }
-
-
 }
