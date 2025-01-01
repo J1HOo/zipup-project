@@ -18,7 +18,7 @@
             <div class="image">
                 <label for="image" class="zipup-label">이미지</label>
                 <div class="product-image" id="product-image">
-                    <input type="file" id="image" name="image">
+                    <input type="file" id="image" name="image" required>
                     <div class="preview" id="preview"></div>
                     <span id="instruction">이미지 박스를 클릭하여<br> 이미지를 추가해주세요<br> <br> 411px X 411px <br> or <br> 1:1 비율 권장</span>
                 </div>
@@ -41,7 +41,7 @@
             <div class="product">
                 <label class="zipup-label">상품 등록</label>
                 <label for="productName">
-                    <input type="text" id="productName" name="productName" class="zipup-input" placeholder="상품명" required>
+                    <input type="text" id="productName" name="productName" class="zipup-input" placeholder="상품명" maxlength="50"  required>
                 </label>
                 <label for="price">
                     <input type="number" id="price" name="price" class="zipup-input" placeholder="상품가격" required>

@@ -220,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ********************** number 버튼 관련********************** */
+
 document.addEventListener("DOMContentLoaded", () => {
     const priceInput = document.getElementById("price");
 
@@ -282,5 +283,26 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();  // 폼 제출 방지
             return;
         }
+    });
+});
+
+
+/* ********************** form 안에서 엔터 눌렀을 때 다음 항목으로 가게 처리 버튼 관련********************** */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const formInputs = document.querySelectorAll(".form-p-add input, .form-p-add select, .form-p-add textarea");
+
+    formInputs.forEach((input, index) => {
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault(); // 폼 제출 기본 동작 방지
+
+                // 다음 인풋으로 이동
+                const nextInput = formInputs[index + 1];
+                if (nextInput) {
+                    nextInput.focus(); // 다음 항목으로 포커스 이동
+                }
+            }
+        });
     });
 });
