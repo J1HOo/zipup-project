@@ -59,6 +59,10 @@ input[type=number] {
     font-size: 16px;
 }
 
+#email.zipup-input {
+    margin-bottom: 1px;
+}
+
 .zipup-input:focus {
     outline: none;
     border: 2px solid #3e71fe;
