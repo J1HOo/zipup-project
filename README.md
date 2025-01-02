@@ -75,9 +75,9 @@ khtAcademy
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/e01f451e-e3b5-4fd8-a777-011042ee0dbe" alt="팀원이미지1" /></td>
-    <td><img src="![images.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/32592084-353f-41f9-8b20-faa305268b99/images.png)" alt="팀원이미지2" /></td>
-    <td><img src="![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/6e8d4b98-b680-481e-b8b8-d051382508df/image.png)" alt="팀원이미지3" /></td>
-    <td><img src="![다운로드.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/e7dac4c5-673d-4e67-b172-a562569d19ec/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg)" alt="팀원이미지4" /></td>
+    <td><img src="https://github.com/user-attachments/assets/820fca8f-a6c5-42c4-9658-6ee0184ec83d"  alt="팀원이미지2"/></td>
+    <td><img src="https://github.com/user-attachments/assets/5c09ae75-81cf-4f8b-bf84-7168fb4e592b" alt="팀원이미지3" /></td>
+    <td><img src="https://github.com/user-attachments/assets/1c4faff2-f501-48f3-a401-b8ad18562b42"  alt="팀원이미지1"/></td>
   </tr>
   <tr>
     <td>박현진</td>
