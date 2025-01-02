@@ -22,11 +22,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductsByCategory(String category) {
-        return productMapper.findByCategory(category);
-    }
-
-    @Override
     public long insertProduct(
             long sellerId,
             MultipartFile image,
@@ -94,8 +89,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     // 상품 검색
-    @Override
-    public List<Product> searchProducts(String productName) {
-        return productMapper.searchProducts(productName);
+    public List<Product> searchProducts(String category, String searchType, String query, String sortOrder) {
+        return productMapper.searchProducts(category, searchType, query, sortOrder);
     }
+
 }

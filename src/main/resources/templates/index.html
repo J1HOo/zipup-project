@@ -14,15 +14,42 @@
   <main>
     <!-- 배너 -->
     <div class="banner">
-      <img src="/images/img/mainBanner.png" alt="mainBanner" style="width: 100%; height: auto;">
-      <!-- 상품 검색 -->
-      <form action="/productList" method="get">
-        <input type="text" name="productName" placeholder="상품명 검색" />
-        <button type="submit">검색</button>
+      <img src="/images/img/mainBanner.png" alt="mainBanner" style="width: 100%; height: 400px;">
+    </div>
+
+    <!-- 검색 및 정렬 폼 -->
+    <div class="search-container">
+      <!-- 검색 폼 -->
+      <form action="/" method="get" class="search-form">
+        <input type="text" name="query" th:value="${query}" placeholder="검색어를 입력하세요" class="search-input">
+        <select name="searchType" class="search-dropdown">
+          <option value="productName" th:selected="${searchType == 'productName'}">상품명</option>
+          <option value="companyName" th:selected="${searchType == 'companyName'}">회사명</option>
+        </select>
+        <input type="hidden" name="category" th:value="${selectedCategory}">
+        <button type="submit" class="search-button">검색</button>
+      </form>
+
+      <!-- 정렬 폼 -->
+      <form action="/" method="get" class="sort-form">
+        <select name="sortOrder" class="search-dropdown">
+          <option value="priceAsc" th:selected="${sortOrder == 'priceAsc'}">가격 오름차순</option>
+          <option value="priceDesc" th:selected="${sortOrder == 'priceDesc'}">가격 내림차순</option>
+        </select>
+        <input type="hidden" name="category" th:value="${selectedCategory}">
+        <input type="hidden" name="query" th:value="${query}">
+        <input type="hidden" name="searchType" th:value="${searchType}">
+        <button type="submit" class="search-button">정렬</button>
       </form>
     </div>
+
     <!-- 상품 리스트 -->
-    <div th:replace="~{productList :: productList}"></div>
+    <div th:if="${products.size() > 0}" th:replace="~{productList :: productList}"></div>
+
+    <!-- 검색 결과 없음 -->
+    <div th:if="${products.size() == 0}" class="search-no-results">
+      검색 결과가 없습니다.
+    </div>
   </main>
 </div>
 

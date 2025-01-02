@@ -813,7 +813,53 @@ input[type=number] {
     text-align: center;
 }
 
-/* ------------------- 메인 페이지 검색 결과 가리기 --------------- */
-#productList {
-    display: none;
+
+/* -------------------- 검색 관련 -------------------- */
+
+
+.search-container {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝 배치 */
+    align-items: center;
+    margin: 20px 0;
 }
+
+/* 검색 폼 */
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 정렬 폼 */
+.sort-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input, .search-dropdown, .search-button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #444;
+}
+
+.search-no-results {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 18px;
+    color: gray;
+    font-weight: bold;
+}
+
