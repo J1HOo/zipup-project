@@ -80,4 +80,8 @@
         </choose>
     </select>
 
+    <select id="getRandomProducts">
+        SELECT * FROM product ORDER BY RAND() LIMIT #{count}
+    </select>
+
 </mapper>

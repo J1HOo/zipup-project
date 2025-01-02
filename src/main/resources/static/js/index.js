@@ -31,5 +31,14 @@
     const x = e.pageX - sliderContainer.offsetLeft;
     const walk = (x - startX) * 2; // 스크롤 속도 조정
     sliderContainer.scrollLeft = scrollLeft - walk;
+    });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const category = document.querySelector('input[name="category"]').value;
+    const query = document.querySelector('input[name="query"]').value;
+
+    if (category !== 'ALL' || query) {
+        document.querySelector('.today-products').classList.add('hidden');
+    }
 });

@@ -41,7 +41,21 @@ public class ProductController {
         // 상품 리스트 가져오기
         List<Product> products = productService.searchProducts(category, searchType, query, sortOrder);
 
-        // 검색 결과를 모델에 추가
+        // 랜덤 상품
+        List<Product> todayProducts = productService.getRandomProducts(8);
+        model.addAttribute("todayProducts", todayProducts);
+
+        // 오늘의 상품 가격 포매팅
+        if (products != null && !products.isEmpty()) {
+            List<String> formattedTodayPrices = products.stream()
+                .map(product -> String.format("%,d", product.getPrice()))
+                .toList();
+            model.addAttribute("formattedTodayPrices", formattedTodayPrices);
+        } else {
+            model.addAttribute("formattedTodayPrices", new ArrayList<>());
+        }
+
+
         model.addAttribute("products", products);
 
         // 포맷된 가격 리스트 추가
