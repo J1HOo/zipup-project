@@ -64,44 +64,6 @@ public class ProductController {
         return "index";
     }
 
-
-    // 카테고리 페이지
-    @GetMapping("/category/{category}")
-    public String getCategoryProducts(@PathVariable("category") String category,
-                                      @RequestParam(value = "searchType", required = false) String searchType,
-                                      @RequestParam(value = "query", required = false) String query,
-                                      @RequestParam(value = "sortOrder", required = false) String sortOrder,
-                                      Model model) {
-        // 기본값 설정
-        if (searchType == null || searchType.isEmpty()) searchType = "productName";
-        if (sortOrder == null || sortOrder.isEmpty()) sortOrder = "priceAsc";
-
-        // 상품 리스트 가져오기
-        List<Product> products = productService.searchProducts(category, searchType, query, sortOrder);
-
-        // 결과가 없을 경우
-        if (products == null || products.isEmpty()) {
-            model.addAttribute("products", new ArrayList<>());
-            model.addAttribute("formattedPrices", new ArrayList<>());
-        } else {
-            // 포맷된 가격 리스트 생성
-            List<String> formattedPrices = products.stream()
-                .map(product -> String.format("%,d", product.getPrice()))
-                .toList();
-
-            model.addAttribute("products", products);
-            model.addAttribute("formattedPrices", formattedPrices);
-        }
-
-        model.addAttribute("selectedCategory", category);
-        model.addAttribute("searchType", searchType);
-        model.addAttribute("query", query);
-        model.addAttribute("sortOrder", sortOrder);
-
-        return "index";
-    }
-
-
     /* 전체 상품 리스트 페이지 */
     @GetMapping("/products")
     public String productListPage(Model model) {
