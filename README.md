@@ -166,9 +166,9 @@ khtAcademy
 
 프로젝트와 관련하여 문의 사항이 있으면 아래 이메일로 연락주세요.
 
-- Email: [zhwoddl0723@gmail.com](mailto:your_zhwoddl0723@gmail.com)
-- Email: [anj575981@gmail.com](mailto:your_anj575981@gmail.com)
-- Email: [zhwoddl0723@gmail.com](mailto:your_zhwoddl0723@gmail.com)
-- Email: [zhwoddl0723@gmail.com](mailto:your_zhwoddl0723@gmail.com)
+- Email: [박현진 : zhwoddl0723@gmail.com](mailto:your_zhwoddl0723@gmail.com)
+- Email: [안정수 : anj575981@gmail.com](mailto:your_anj575981@gmail.com)
+- Email: [박지호 : businessj1ho@gmail.com](mailto:your_businessj1ho@gmail.com)
+- Email: [황아현 : hah4815@gmail.com](mailto:your_hah4815@gmail.com)
 
 
