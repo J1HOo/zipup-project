@@ -40,7 +40,6 @@ public class ProductController {
 
         // 상품 리스트 가져오기
         List<Product> products = productService.searchProducts(category, searchType, query, sortOrder);
-        System.out.println("Filtered Products: " + products);
 
         // 검색 결과를 모델에 추가
         model.addAttribute("products", products);
