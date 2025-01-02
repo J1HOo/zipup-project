@@ -5,12 +5,13 @@
     </a>
   </div>
   <nav class="nav">
-    <a th:href="@{/}" th:classappend="${selectedCategory == null} ? 'active' : ''">ALL</a>
-    <a th:href="@{/products/category(category='OUTER')}" th:classappend="${selectedCategory == 'OUTER'} ? 'active' : ''">OUTER</a>
-    <a th:href="@{/products/category(category='TOP')}" th:classappend="${selectedCategory == 'TOP'} ? 'active' : ''">TOP</a>
-    <a th:href="@{/products/category(category='BOTTOM')}" th:classappend="${selectedCategory == 'BOTTOM'} ? 'active' : ''">BOTTOM</a>
-    <a th:href="@{/products/category(category='ACC')}" th:classappend="${selectedCategory == 'ACC'} ? 'active' : ''">ACC</a>
+    <a th:href="@{/}" th:classappend="${selectedCategory == 'ALL'} ? 'active' : ''">ALL</a>
+    <a th:href="@{/category/OUTER}" th:classappend="${selectedCategory == 'OUTER'} ? 'active' : ''">OUTER</a>
+    <a th:href="@{/category/TOP}" th:classappend="${selectedCategory == 'TOP'} ? 'active' : ''">TOP</a>
+    <a th:href="@{/category/BOTTOM}" th:classappend="${selectedCategory == 'BOTTOM'} ? 'active' : ''">BOTTOM</a>
+    <a th:href="@{/category/ACC}" th:classappend="${selectedCategory == 'ACC'} ? 'active' : ''">ACC</a>
   </nav>
+
   <div class="auth-links">
     <!-- 비회원 -->
     <div th:if="${session.loginUser == null}">

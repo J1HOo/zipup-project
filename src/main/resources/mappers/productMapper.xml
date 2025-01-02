@@ -9,11 +9,6 @@
         SELECT * FROM product
     </select>
 
-    <!-- 카테고리별 상품 리스트 -->
-    <select id="findByCategory">
-        SELECT * FROM product WHERE category = #{category}
-    </select>
-
     <!-- 판매자 제품 등록 하기 -->
     <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO PRODUCT (SELLERID, IMAGE, CATEGORY, PRODUCTNAME, PRICE, OPTION1, OPTION2, OPTION3, DESCRIPTION)
@@ -56,6 +51,33 @@
         JOIN PRODUCT P
         ON U.ID = P.sellerID
         WHERE p.ID = #{id}
+    </select>
+
+    <select id="searchProducts">
+        SELECT p.*, u.companyName AS companyName
+        FROM product p
+        LEFT JOIN user u ON p.sellerId = u.id
+        WHERE 1=1
+        <if test="category != null and category != 'ALL'">
+            AND p.category = #{category}
+        </if>
+        <if test="query != null and searchType == 'productName'">
+            AND p.productName LIKE CONCAT('%', #{query}, '%')
+        </if>
+        <if test="query != null and searchType == 'companyName'">
+            AND u.companyName LIKE CONCAT('%', #{query}, '%')
+        </if>
+        <choose>
+            <when test="sortOrder == 'priceAsc'">
+                ORDER BY p.price ASC
+            </when>
+            <when test="sortOrder == 'priceDesc'">
+                ORDER BY p.price DESC
+            </when>
+            <otherwise>
+                ORDER BY RAND()
+            </otherwise>
+        </choose>
     </select>
 
 </mapper>

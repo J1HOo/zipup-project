@@ -214,9 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
             option3Button.classList.add('color-change'); // 비활성화 색상 변경
         }
     });
+
+    // 옵션 없음 선택했을 때 상세페이지 옵션 비활성화
 });
 
+
 /* ********************** number 버튼 관련********************** */
+
 document.addEventListener("DOMContentLoaded", () => {
     const priceInput = document.getElementById("price");
 
@@ -224,5 +228,81 @@ document.addEventListener("DOMContentLoaded", () => {
     priceInput.addEventListener("input", (event) => {
         const input = event.target.value;// 숫자만 남김
         event.target.value = input.replace(/[^0-9]/g, ""); // 입력 필드에 숫자만 설정
+    });
+});
+
+/* ********************** 이미지 등록 안내 창 관련 ********************** */
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".form-p-add");
+    const imageInput = document.getElementById("image");
+    const categoryInputs = document.getElementsByName("category");
+    const colorInputs = document.querySelectorAll("#color-option-container input");
+    const sizeInputs = document.querySelectorAll("#size-option-container input");
+    const descriptionInput = document.getElementById("description");
+    const option3Button = document.getElementById("option3");  // "옵션 없음" 버튼
+
+    // "옵션 없음" 상태를 추적하는 변수
+    let isNoOptionSelected = false;
+
+    // "옵션 없음" 버튼 클릭 시 상태 변경
+    option3Button.addEventListener("click", function () {
+        isNoOptionSelected = !isNoOptionSelected;  // 상태 토글
+    });
+
+    form.addEventListener("submit", function (event) {
+        // 이미지 등록 여부 확인
+        if (!imageInput.files.length) {
+            alert("이미지를 등록해 주세요.");  // 안내 메시지
+            event.preventDefault();  // 폼 제출 방지
+            return;
+        }
+
+        // 카테고리 선택 여부 확인
+        const isCategorySelected = Array.from(categoryInputs).some(input => input.checked);
+        if (!isCategorySelected) {
+            alert("카테고리를 선택해 주세요.");  // 안내 메시지
+            event.preventDefault();  // 폼 제출 방지
+            return;
+        }
+
+        // "옵션 없음"이 선택되지 않았다면 옵션 입력 여부 확인
+        if (!isNoOptionSelected) {
+            const isOptionProvided = Array.from(colorInputs).some(input => input.value.trim() !== "") ||
+                Array.from(sizeInputs).some(input => input.value.trim() !== "");
+
+            if (!isOptionProvided) {
+                alert("상품 옵션을 입력해 주세요.");  // 안내 메시지
+                event.preventDefault();  // 폼 제출 방지
+                return;
+            }
+        }
+
+        // 상세 이미지 등록 여부 확인
+        if (!descriptionInput.files.length) {
+            alert("상세 이미지를 등록해 주세요.");  // 안내 메시지
+            event.preventDefault();  // 폼 제출 방지
+            return;
+        }
+    });
+});
+
+
+/* ********************** form 안에서 엔터 눌렀을 때 다음 항목으로 가게 처리 버튼 관련********************** */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const formInputs = document.querySelectorAll(".form-p-add input, .form-p-add select, .form-p-add textarea");
+
+    formInputs.forEach((input, index) => {
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault(); // 폼 제출 기본 동작 방지
+
+                // 다음 인풋으로 이동
+                const nextInput = formInputs[index + 1];
+                if (nextInput) {
+                    nextInput.focus(); // 다음 항목으로 포커스 이동
+                }
+            }
+        });
     });
 });

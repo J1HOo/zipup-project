@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,35 +27,87 @@ public class ProductController {
 
     /* 메인 페이지 */
     @GetMapping("/")
-    public String mainPage(HttpSession session, Model model) {
-        // 로그인 사용자 확인
-        User loginUser = (User) session.getAttribute("loginUser");
-        if (loginUser != null) {
-            model.addAttribute("user", loginUser);
-        }
+    public String mainPage(@RequestParam(value = "category", required = false) String category,
+                           @RequestParam(value = "searchType", required = false) String searchType,
+                           @RequestParam(value = "query", required = false) String query,
+                           @RequestParam(value = "sortOrder", required = false) String sortOrder,
+                           Model model) {
+
+        // 기본값 설정
+        if (category == null) category = "ALL";
+        if (searchType == null) searchType = "productName";
+        if (sortOrder == null) sortOrder = "random";
 
         // 상품 리스트 가져오기
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = productService.searchProducts(category, searchType, query, sortOrder);
+        System.out.println("Filtered Products: " + products);
+
+        // 검색 결과를 모델에 추가
         model.addAttribute("products", products);
 
-        return "index"; // 메인 페이지
+        // 포맷된 가격 리스트 추가
+        if (products != null && !products.isEmpty()) {
+            List<String> formattedPrices = products.stream()
+                .map(product -> String.format("%,d", product.getPrice()))
+                .toList();
+            model.addAttribute("formattedPrices", formattedPrices);
+        } else {
+            model.addAttribute("formattedPrices", new ArrayList<>());
+        }
+
+        // 현재 선택된 옵션 전달
+        model.addAttribute("selectedCategory", category);
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("query", query);
+        model.addAttribute("sortOrder", sortOrder);
+
+        return "index";
     }
+
+
+    // 카테고리 페이지
+    @GetMapping("/category/{category}")
+    public String getCategoryProducts(@PathVariable("category") String category,
+                                      @RequestParam(value = "searchType", required = false) String searchType,
+                                      @RequestParam(value = "query", required = false) String query,
+                                      @RequestParam(value = "sortOrder", required = false) String sortOrder,
+                                      Model model) {
+        // 기본값 설정
+        if (searchType == null || searchType.isEmpty()) searchType = "productName";
+        if (sortOrder == null || sortOrder.isEmpty()) sortOrder = "priceAsc";
+
+        // 상품 리스트 가져오기
+        List<Product> products = productService.searchProducts(category, searchType, query, sortOrder);
+
+        // 결과가 없을 경우
+        if (products == null || products.isEmpty()) {
+            model.addAttribute("products", new ArrayList<>());
+            model.addAttribute("formattedPrices", new ArrayList<>());
+        } else {
+            // 포맷된 가격 리스트 생성
+            List<String> formattedPrices = products.stream()
+                .map(product -> String.format("%,d", product.getPrice()))
+                .toList();
+
+            model.addAttribute("products", products);
+            model.addAttribute("formattedPrices", formattedPrices);
+        }
+
+        model.addAttribute("selectedCategory", category);
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("query", query);
+        model.addAttribute("sortOrder", sortOrder);
+
+        return "index";
+    }
+
 
     /* 전체 상품 리스트 페이지 */
     @GetMapping("/products")
     public String productListPage(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        return "productList"; // 상품 리스트 페이지
-    }
-
-    /* 카테고리별 상품 리스트 페이지 */
-    @GetMapping("/products/category")
-    public String categoryPage(@RequestParam("category") String category, Model model) {
-        List<Product> products = productService.getProductsByCategory(category);
-        model.addAttribute("products", products);
-        model.addAttribute("selectedCategory", category);
-        return "productList"; // 카테고리별 상품 리스트 템플릿
+        return "productList";
     }
 
     /* 상품 등록 페이지 */
@@ -72,7 +125,7 @@ public class ProductController {
             return "redirect:/";
         }
 
-        return "productAdd"; // 상품 등록 페이지
+        return "productAdd";
     }
 
     /* 상품 등록 요청 처리 */
@@ -100,7 +153,7 @@ public class ProductController {
             return "redirect:/product/detail/" + productId;
         } catch (Exception e) {
             model.addAttribute("error", "상품 등록 중 문제가 발생했습니다.");
-            return "productAdd"; // 상품 등록 페이지로 이동
+            return "productAdd";
         }
     }
 
@@ -114,7 +167,7 @@ public class ProductController {
 
         if (loginUser == null) {
             model.addAttribute("error", "로그인이 필요합니다.");
-            return "redirect:/login"; // 비회원은 로그인 페이지로 리디렉션
+            return "redirect:/login"; // 비회원은 로그인 페이지로
         }
 
         if (product == null) {
@@ -129,8 +182,9 @@ public class ProductController {
         }
 
         String formattedPrice = NumberFormat.getNumberInstance(Locale.KOREA).format(product.getPrice());
-        model.addAttribute("product", product);
         model.addAttribute("formattedPrice", formattedPrice);
+
+        model.addAttribute("product", product);
 
         List<String> option1List = product.getOption1() != null ? List.of(product.getOption1().split(",")) : List.of();
         List<String> option2List = product.getOption2() != null ? List.of(product.getOption2().split(",")) : List.of();
@@ -141,7 +195,48 @@ public class ProductController {
         model.addAttribute("option2List", option2List);
         model.addAttribute("description", product.getDescription());
 
-        return "productDetail"; // 상세 페이지
+        return "productDetail";
 
+    }
+
+    /* 상품 상세 페이지 이동 */
+    @GetMapping("/product/{id}")
+    public String viewProductDetail(@PathVariable Long id, Model model) {
+        Product product = productService.getProductById(id); // ID로 상품 조회
+        model.addAttribute("product", product);
+        return "productDetail";
+    }
+
+
+    @GetMapping("/purchase/completed/{id}")
+    public String purchaseCompleted(@PathVariable("id") Long id,
+                                    @RequestParam(required = false) String option1,
+                                    @RequestParam(required = false) String option2,
+                                    HttpSession session,
+                                    Model model) {
+        // 로그인 사용자 확인
+        User loginUser = (User) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            model.addAttribute("error", "로그인이 필요합니다.");
+            return "redirect:/login";
+        }
+
+        // 상품 데이터 조회
+        Product product = productService.getProductById(id);
+        if (product == null) {
+            model.addAttribute("error", "상품 정보를 찾을 수 없습니다.");
+            return "redirect:/";
+        }
+
+        // 모델에 데이터 추가
+        model.addAttribute("userName", loginUser.getUserName());
+        model.addAttribute("address", loginUser.getAddress());
+        model.addAttribute("companyName", userService.getUserById(product.getSellerId()).getCompanyName());
+        model.addAttribute("product", product);
+        model.addAttribute("option1", option1 != null ? option1 : "옵션 없음");
+        model.addAttribute("option2", option2 != null ? option2 : "옵션 없음");
+        model.addAttribute("formattedPrice", NumberFormat.getNumberInstance(Locale.KOREA).format(product.getPrice()));
+
+        return "purchaseCompleted";
     }
 }
