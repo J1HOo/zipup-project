@@ -32,6 +32,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/********************  판매자 아이디(이메일) 중복 확인 여부*********************************/
+let sellerEmailChecked = false; // 이메일 중복 확인 여부
+document.addEventListener("DOMContentLoaded", function () {
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const form = document.querySelector(".signup-form");
+    const checkEmailBtn = document.getElementById("check-email-btn");
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*+=-])[A-Za-z\d!@#$%^&*+=-]{8,}$/;
+
+    checkEmailBtn.addEventListener("click", function () {
+        const email = emailInput.value;
+
+        // 이메일 패턴 체크
+        if (!emailPattern.test(email)) {
+            alert("이메일 형식이 올바르지 않습니다.");
+            return;
+        }
+
+        // 여기서 실제로 이메일 중복을 확인하는 로직을 서버에 요청하거나
+        // 간단히 바로 "중복 확인 완료" 처리를 하여, 아래와 같이 sellerEmailChecked를 true로 설정할 수 있습니다.
+
+        // 이메일 중복 확인 예시 (여기서는 단순히 예시로 처리)
+        sellerEmailChecked = true; // 이메일 중복 확인 완료 후, true로 설정
+    });
+
+    // 폼 제출 시 비밀번호 및 이메일 검사
+    form.addEventListener("submit", function (event) {
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        // 이메일 검증
+        if (!emailPattern.test(email)) {
+            alert("이메일은 이메일 형식으로 영문자 및 숫자 조합으로 제출해주세요.");
+            event.preventDefault(); // 폼 제출 방지
+        }
+
+        //비밀번호 검증
+        if (!passwordPattern.test(password)) {
+            alert("비밀번호는 영문, 숫자, 특수문자 조합으로 8자리 이상이어야 합니다.");
+            event.preventDefault(); // 폼 제출 방지
+        }
+
+        // 이메일 중복 확인 여부 체크
+        if (!sellerEmailChecked) {
+            alert("이메일 중복 확인을 먼저 해주세요.");
+            event.preventDefault(); // 폼 제출 방지
+        }
+    });
+});
 
 /******************** 아이디(이메일) 중복************************************************/
 
