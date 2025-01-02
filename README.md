@@ -33,13 +33,13 @@ khtAcademy
 ├── src
 │   ├── main
 │   │   ├── java
-│   │   │   └── com.kh.khtAcademy
+│   │   │   └── com.teamzipup.zipup
 │   │   │       ├── config
 │   │   │       ├── controller
 │   │   │       ├── dto
 │   │   │       ├── mapper
 │   │   │       ├── service
-│   │   │       └── KhtAcademyApplication
+│   │   │       └── ZipupApplication
 │   │   ├── resources
 │   │       ├── mappers
 │   │       ├── static
@@ -74,10 +74,10 @@ khtAcademy
 
 <table>
   <tr>
-    <td><img src="https://via.placeholder.com/100" alt="팀원이미지1" /></td>
-    <td><img src="https://via.placeholder.com/100" alt="팀원이미지2" /></td>
-    <td><img src="https://via.placeholder.com/100" alt="팀원이미지3" /></td>
-    <td><img src="https://via.placeholder.com/100" alt="팀원이미지4" /></td>
+    <td><img src="![다운로드.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/a9b01b6e-903a-469b-85a8-fcc77dbfec74/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg)" alt="팀원이미지1" /></td>
+    <td><img src="![images.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/32592084-353f-41f9-8b20-faa305268b99/images.png)" alt="팀원이미지2" /></td>
+    <td><img src="![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/6e8d4b98-b680-481e-b8b8-d051382508df/image.png)" alt="팀원이미지3" /></td>
+    <td><img src="![다운로드.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/6030ff21-483b-4bd1-bf89-2895837ed9c3/e7dac4c5-673d-4e67-b172-a562569d19ec/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg)" alt="팀원이미지4" /></td>
   </tr>
   <tr>
     <td>박현진</td>
@@ -86,16 +86,16 @@ khtAcademy
     <td>황아현</td>
   </tr>
   <tr>
-    <td>회원가입</td>
-    <td>게시판</td>
-    <td>메인</td>
-    <td>마이페이지</td>
+    <td>이용자 회원가입</td>
+    <td>판매자 회원가입</td>
+    <td>메인 페이지</td>
+    <td>생성 페이지</td>
   </tr>
   <tr>
-    <td>깃허브</td>
-    <td>노션 정리</td>
-    <td>문서 정리</td>
     <td>readme 정리</td>
+    <td>문서 정리</td>
+    <td>git 담당 </td>
+    <td>노션 정리</td>
   </tr>
 </table>
 
@@ -166,5 +166,5 @@ khtAcademy
 
 프로젝트와 관련하여 문의 사항이 있으면 아래 이메일로 연락주세요.
 
-- Email: [your_email@example.com](mailto:your_email@example.com)
+- Email: [your_zhwoddl0723@gmail.com](mailto:your_zhwoddl0723@gmail.com)
 
