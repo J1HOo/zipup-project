@@ -25,13 +25,13 @@ public class AuthController {
     @PostMapping("/signup/user")
     public String userSignup(@ModelAttribute("user") User user, Model model) {
         if (userService.isEmailTaken(user.getEmail())) {
-            model.addAttribute("error", "중복된 이메일입니다. 다른 이메일을 입력하세요.");
+
             return "userSignup"; // 회원가입 페이지로 다시 이동
         }
         user.setRole("user"); // 이용자 역할 설정
         userService.insertUser(user);
-        model.addAttribute("msg", "회원가입 성공 (이용자)");
-        return "redirect:/";
+
+        return "login";
     }
     // 이메일 중복체크
     @GetMapping("/check-email")
