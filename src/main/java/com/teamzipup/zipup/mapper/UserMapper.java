@@ -31,4 +31,7 @@ public interface UserMapper {
     // 아이디로 조회
     User findById(long id);
 
+    //판매자 정보 가져오기
+    User getUserBySellerId(Long sellerId);
+
 }
