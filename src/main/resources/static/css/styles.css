@@ -356,6 +356,7 @@ input[type=number] {
     color: red;
     margin-bottom: 20px;
 }
+
 /* -------------------- 마이페이지 파트 ------------------------ */
 .mypage-container {
     max-width: 1200px; /* 테이블 최대 너비 */
@@ -394,7 +395,8 @@ input[type=number] {
 .mypage-table tr:hover {
     background-color: #f1f1f1; /* 호버 시 배경색 */
 }
-.mypage-h1{
+
+.mypage-h1 {
     margin-bottom: 20px;
 }
 
@@ -509,14 +511,17 @@ input[type=number] {
 }
 
 .seller-detail-container .product #price {
-    appearance: none; -moz-appearance: textfield;
-}/*수정 중*/
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+/*수정 중*/
 
 .seller-detail-container .description-preview {
     width: 853px;
     height: auto;
     display: flex;
-    margin : 30px auto 0;
+    margin: 30px auto 0;
     text-align: center;
     justify-content: center;
     overflow: hidden;
@@ -853,7 +858,7 @@ input[type=number] {
 
 /* -------------------- 구매 완료 페이지 -------------------- */
 
-.pc-container{
+.pc-container {
     width: 100%;
     max-width: 407px;
     margin: 50px auto;
@@ -867,7 +872,7 @@ input[type=number] {
 }
 
 .pc-container .completed-text {
-    color:#3e71fe;
+    color: #3e71fe;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 40px;
@@ -878,9 +883,18 @@ input[type=number] {
     margin-top: 25px;
 }
 
-.pc-container .pc-hr .info-hr {
+.pc-container .info-hr {
     border: 1px solid #777777;
-    margin: 10px 0;
+    grid-column: 1 / -1; /* 그리드의 첫 번째 열에서 마지막 열까지 병합 */
+    width: 100%; /* 병합된 상태에서도 가로 길이를 유지 */
+    border-top: 1px solid #eaeaea;
+}
+
+.pc-container .info-grid {
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: 8px;
+    align-items: center;
 }
 
 .pc-container .announcement {
@@ -888,7 +902,7 @@ input[type=number] {
     margin-top: 20px;
 }
 
-.shipping-info, .user-info {
+.pc-container .user-info {
     background-color: white;
     padding: 15px;
     border: 1px solid #777777;
@@ -904,37 +918,46 @@ input[type=number] {
     margin-bottom: 15px;
 }
 
-.pc-container .info-grid {
-    display: grid;
-    grid-template-columns: 100px auto;
-    gap: 8px;
-    align-items: center;
+.pc-container .info-label {
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
 }
+
 
 .pc-container .info-title {
-    font-size: 14px;
-    color: #555555;
+    font-size: 15px;
+    color: #808080;
 }
 
-.info {
-    font-size: 14px;
-    color: #333333;
+.pc-container .info {
+    font-size: 15px;
+    color: black;
+}
+
+.pc-container .info-name {
+    grid-column: 1 / -1;
+    font-size: 18px;
+    color: black;
 }
 
 
-.info-option {
+.pc-container .info-option {
     grid-column: 1 / -1;
     font-size: 14px;
-    color: #666666;
-    margin-top: 5px;
+    color: #777777;
 }
 
-.info-price {
-    grid-column: 1 / -1;
-    font-size: 16px;
+.pc-container .info-price {
+    font-size: 25px;
     color: #FA3C56;
     font-weight: bold;
     text-align: right;
+}
+
+.pc-container .span-price {
+    color: #FA3C56;
+    font-size: 18px;
 }
 
 
