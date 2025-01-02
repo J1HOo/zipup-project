@@ -74,7 +74,7 @@ khtAcademy
 
 <table>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/e01f451e-e3b5-4fd8-a777-011042ee0dbe" alt="팀원이미지1" /></td>
+    <td><img src="https://github.com/user-attachments/assets/e01f451e-e3b5-4fd8-a777-011042ee0dbe" alt="팀원이미지1" width="100" height="100" /></td>
     <td><img src="https://github.com/user-attachments/assets/820fca8f-a6c5-42c4-9658-6ee0184ec83d"  alt="팀원이미지2"/></td>
     <td><img src="https://github.com/user-attachments/assets/5c09ae75-81cf-4f8b-bf84-7168fb4e592b" alt="팀원이미지3" /></td>
     <td><img src="https://github.com/user-attachments/assets/1c4faff2-f501-48f3-a401-b8ad18562b42"  alt="팀원이미지1"/></td>
