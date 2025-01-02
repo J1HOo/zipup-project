@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Product List</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/index.js"></script>
+</head>
+<body>
+<div th:fragment="todayProductList">
+  <div class="slider-container">
+    <div class="slider-wrapper">
+      <div class="slider-product-card" th:each="product, iterStat : ${todayProducts}">
+        <a th:href="@{/product/detail/{id}(id=${product.id})}">
+          <img th:src="${product.image}" alt="상품 이미지" onerror="this.src='/images/img/logo.png';">
+        </a>
+        <div class="product-info">
+          <p class="product-category" th:text="${product.category}"></p>
+          <p class="product-name" th:text="${product.productName}"></p>
+          <p class="product-price" th:text="${formattedTodayPrices != null ? formattedTodayPrices[iterStat.index] + ' 원' : '가격 없음'}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

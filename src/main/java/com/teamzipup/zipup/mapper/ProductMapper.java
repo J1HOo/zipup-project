@@ -23,4 +23,7 @@ public interface ProductMapper {
                                  @Param("searchType") String searchType,
                                  @Param("query") String query,
                                  @Param("sortOrder") String sortOrder);
+
+    // 오늘의 상품
+    List<Product> getRandomProducts(int count);
 }

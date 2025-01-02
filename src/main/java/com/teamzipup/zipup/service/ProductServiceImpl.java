@@ -93,4 +93,9 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.searchProducts(category, searchType, query, sortOrder);
     }
 
+    // 오늘의 상품
+    public List<Product> getRandomProducts(int count) {
+        return productMapper.getRandomProducts(count);
+    }
+
 }
