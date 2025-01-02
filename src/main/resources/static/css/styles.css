@@ -854,18 +854,87 @@ input[type=number] {
 /* -------------------- 구매 완료 페이지 -------------------- */
 
 .pc-container{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto; /* 행 크기 자동 조정 */
-    gap: 40px 35px; /*그리드 간격 row column*/
+    width: 100%;
+    max-width: 407px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-.pc-container .logo {
-    display: flex;
-    justify-items: center;
-    width: 158px;
-    height: 33px;
-    text-align: center;
+.pc-container .shopping_icon {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+.pc-container .completed-text {
+    color:#3e71fe;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.pc-container .pc-hr {
+    border: 1px solid #777777;
+    margin-top: 25px;
+}
+
+.pc-container .pc-hr .info-hr {
+    border: 1px solid #777777;
+    margin: 10px 0;
+}
+
+.pc-container .announcement {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.shipping-info, .user-info {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #777777;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.pc-container .shipping-info {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #777777;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.pc-container .info-grid {
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.pc-container .info-title {
+    font-size: 14px;
+    color: #555555;
+}
+
+.info {
+    font-size: 14px;
+    color: #333333;
+}
+
+
+.info-option {
+    grid-column: 1 / -1;
+    font-size: 14px;
+    color: #666666;
+    margin-top: 5px;
+}
+
+.info-price {
+    grid-column: 1 / -1;
+    font-size: 16px;
+    color: #FA3C56;
+    font-weight: bold;
+    text-align: right;
 }
 
 
