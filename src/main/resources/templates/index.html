@@ -17,15 +17,16 @@
     </div>
 
     <!-- 오늘의 상품 리스트 -->
-    <div th:if="${selectedCategory == 'ALL' && query == null}" class="today-products">
       <p class="product-text">TODAY BEST</p>
+    <div th:if="${selectedCategory == 'ALL' && query == null}" class="today-products">
 
       <div th:replace="~{todayProductList :: todayProductList}"></div>
     </div>
 
-
       <!-- 검색 폼 -->
     <div class="search-container">
+        <span class="product-list-text" th:text="${selectedCategory}"></span>
+        <div class="search">
       <form action="/" method="get" class="search-form">
         <input type="text" name="query" th:value="${query}" placeholder="검색어를 입력하세요" class="search-input">
         <select name="searchType" class="search-dropdown">
@@ -47,10 +48,10 @@
         <input type="hidden" name="searchType" th:value="${searchType}">
         <button type="submit" class="search-button">정렬</button>
       </form>
+        </div>
     </div>
 
 
-    <p class="product-text" th:text="${selectedCategory}"></p>
     <!-- 상품 리스트 -->
     <div th:if="${products.size() > 0}" th:replace="~{productList :: productList}"></div>
 
