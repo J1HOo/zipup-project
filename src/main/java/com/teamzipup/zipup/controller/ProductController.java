@@ -108,11 +108,6 @@ public class ProductController {
                              Model model) {
         User loginUser = (User) session.getAttribute("loginUser");
 
-        if (loginUser == null || !"seller".equals(loginUser.getRole())) {
-            model.addAttribute("error", "상품 등록 권한이 없습니다.");
-            return "redirect:/login";
-        }
-
         try {
             long sellerId = loginUser.getId();
             long productId = productService.insertProduct(sellerId, image, productName, price, option1, option2, category, description);
