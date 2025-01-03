@@ -52,11 +52,20 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // 여기서 실제로 이메일 중복을 확인하는 로직을 서버에 요청하거나
-        // 간단히 바로 "중복 확인 완료" 처리를 하여, 아래와 같이 sellerEmailChecked를 true로 설정할 수 있습니다.
-
-        // 이메일 중복 확인 예시 (여기서는 단순히 예시로 처리)
-        sellerEmailChecked = true; // 이메일 중복 확인 완료 후, true로 설정
+        // 서버에 이메일 중복 확인 요청
+        fetch(`/check-email?email=${email}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.isTaken) {
+                    sellerEmailChecked = false; // 이메일 중복
+                } else {
+                    sellerEmailChecked = true; // 이메일 사용 가능
+                }
+            })
+            .catch(error => {
+                alert("이메일 중복 확인에 실패했습니다.");
+                sellerEmailChecked = false; // 실패 시 중복 확인 안됨
+            });
     });
 
     // 폼 제출 시 비밀번호 및 이메일 검사

@@ -48,7 +48,7 @@ public class AuthController {
         user.setRole("seller"); // 판매자 역할 설정
         userService.insertSeller(user);
         model.addAttribute("msg", "회원가입 성공 (판매자)");
-        return "redirect:/";
+        return "login";
     }
 
     @PostMapping("/login")
