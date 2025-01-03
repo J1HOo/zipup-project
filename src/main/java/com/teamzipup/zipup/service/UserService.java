@@ -31,4 +31,6 @@ public interface UserService {
 
     // 아이디로 조회
     User getUserById(long id);
+    // 판매자 정보 가져오기
+    User getUserBySellerId(Long sellerId);
 }

@@ -47,7 +47,7 @@ public class ProductController {
 
         // 랜덤 상품
         if ("ALL".equals(category)) {
-            List<Product> todayProducts = productService.getRandomProducts(8);
+            List<Product> todayProducts = productService.getRandomProducts(5);
             model.addAttribute("todayProducts", todayProducts);
             model.addAttribute("formattedTodayPrices", formatPrices(todayProducts));
         } else {
@@ -195,10 +195,17 @@ public class ProductController {
             return "redirect:/";
         }
 
+        // 판매자 companyName 가져오기
+        User seller = userService.getUserBySellerId(product.getSellerId());
+        String sellerCompanyName = seller != null ? seller.getCompanyName() : "알 수 없음";
+        System.out.println(sellerCompanyName);
+        System.out.println("Seller ID: " + product.getSellerId());
         // 모델에 데이터 추가
         model.addAttribute("userName", loginUser.getUserName());
         model.addAttribute("address", loginUser.getAddress());
-        model.addAttribute("companyName", userService.getUserById(product.getSellerId()).getCompanyName());
+        model.addAttribute("companyName", sellerCompanyName);
+        System.out.println("companyName" + sellerCompanyName);
+        System.out.println("Seller ID: " + product.getSellerId());
         model.addAttribute("product", product);
         model.addAttribute("option1", option1 != null ? option1 : "옵션 없음");
         model.addAttribute("option2", option2 != null ? option2 : "옵션 없음");

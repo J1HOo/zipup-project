@@ -66,7 +66,6 @@ public class ProductServiceImpl implements ProductService {
             product.setPrice(price);
             product.setOption1(option1);
             product.setOption2(option2);
-            product.setOption3(option3);
             product.setCategory(category);
             product.setImage("/images/product_images/" + uniqueImageName);
             product.setDescription("/images/description_images/" + uniqueDescriptionName);

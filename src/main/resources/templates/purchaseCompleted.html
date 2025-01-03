@@ -14,16 +14,17 @@
 <form action="/" method="get">
     <!-- 전체 컨테이너 -->
     <div class="pc-container">
-        <img src="/images/img/logo.png" class="logo">
         <div class="completed">
             <img class="shopping_icon" src="/images/svg/shopping.svg">
-            <span class="completed-text">주문이 완료되었습니다</span>
+        </div>
+        <div class="completed-text">
+            <span>주문이 완료되었습니다</span>
             <hr class="pc-hr">
         </div>
         <div class="announcement">
             <div class="shipping-info">
                 <div class="info-grid">
-                    <label class="zipup-label">배송정보</label>
+                    <label class="info-label">배송정보</label><br>
                     <hr class="info-hr">
                     <label class="info-title">받는 분</label>
                     <label class="info" th:text="${userName}"></label>
@@ -33,11 +34,12 @@
             </div>
             <div class="user-info">
                 <div class="info-grid">
-                    <label class="zipup-label">주문정보</label>
+                    <label class="info-label">주문정보</label>
                     <hr class="info-hr">
-                    <label class="info" th:text="${companyName}"></label>
-                    <label class="info" th:text="${product.productName}"></label>
+                    <label class="info-name" th:text="${companyName}"></label>
+                    <label class="info-name" th:text="${product.productName}"></label>
                     <span class="info-option" th:text="${option1} + ' / ' + ${option2}"></span>
+                    <span class="span-price">결제 금액</span>
                     <label class="info-price" th:text="${formattedPrice}"></label>
                 </div>
             </div>

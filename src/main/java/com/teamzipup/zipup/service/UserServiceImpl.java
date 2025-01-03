@@ -61,4 +61,11 @@ public class UserServiceImpl implements UserService {
     public User getUserById(long id) {
         return userMapper.findById(id);
     }
+
+    // 판매자 정보 가져오기
+    @Override
+    public User getUserBySellerId(Long sellerId) {
+        return userMapper.getUserBySellerId(sellerId);
+    }
 }
+
