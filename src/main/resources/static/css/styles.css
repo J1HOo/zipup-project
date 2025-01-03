@@ -241,6 +241,7 @@ input[type=number] {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 130px;
 }
 
 /* -------------------- 로그인 파트 ----------------------- */
@@ -1004,7 +1005,7 @@ input[type=number] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 130px 0 20px 0; /* 상하 여백 */
+    margin: 20px 0; /* 상하 여백 */
     gap: 20px; /* 폼 간의 간격 */
 }
 
