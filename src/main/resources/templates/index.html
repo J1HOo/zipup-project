@@ -10,23 +10,22 @@
 
 <div th:replace="~{layout/header :: header}"></div>
 
-<div class="content-container">
-  <main>
+    <div class="content-container">
     <!-- 배너 -->
     <div class="banner">
-      <img src="/images/img/mainBanner.png" alt="mainBanner">
+      <img src="/images/img/mainBanner.png" alt="mainBanner" style="width: 100%">
     </div>
+
     <!-- 오늘의 상품 리스트 -->
     <div th:if="${selectedCategory == 'ALL' && query == null}" class="today-products">
-      <p class="today-product">TODAY BEST</p>
+      <p class="product-text">TODAY BEST</p>
 
       <div th:replace="~{todayProductList :: todayProductList}"></div>
     </div>
 
 
-    <!-- 검색 및 정렬 폼 -->
-    <div class="search-container">
       <!-- 검색 폼 -->
+    <div class="search-container">
       <form action="/" method="get" class="search-form">
         <input type="text" name="query" th:value="${query}" placeholder="검색어를 입력하세요" class="search-input">
         <select name="searchType" class="search-dropdown">
@@ -51,8 +50,7 @@
     </div>
 
 
-    <h1 class="product-list-text" th:text="${selectedCategory}"></h1>
-
+    <p class="product-text" th:text="${selectedCategory}"></p>
     <!-- 상품 리스트 -->
     <div th:if="${products.size() > 0}" th:replace="~{productList :: productList}"></div>
 
@@ -60,8 +58,6 @@
     <div th:if="${products.size() == 0}" class="search-no-results">
       검색 결과가 없습니다.
     </div>
-
-  </main>
 </div>
 
 <div th:replace="~{layout/footer :: footer}"></div>
