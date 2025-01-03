@@ -1,4 +1,4 @@
-# KHT Academy
+# ZIP UP
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
@@ -10,7 +10,7 @@
 ![Lombok](https://img.shields.io/badge/Project%20Lombok-FF2D20?style=for-the-badge&logo=lombok&logoColor=white)
 
 ## 프로젝트 개요
-KHT Academy는 Java Spring Boot를 기반으로 한 웹 애플리케이션 프로젝트로, MyBatis를 통해 데이터베이스와 통신하며, Thymeleaf를 활용해 동적 HTML 페이지를 생성합니다. 이 프로젝트는 프론트엔드와 백엔드 기술을 조화롭게 결합하여 효율적이고 사용자 친화적인 웹 서비스를 제공합니다.
+ZIP UP은 Java Spring Boot를 기반으로 한 쇼핑몰 프로젝트로, MyBatis를 통해 데이터베이스와 통신하며, Thymeleaf를 활용해 동적 HTML 페이지를 생성합니다. 이 프로젝트는 프론트엔드와 백엔드 기술을 조화롭게 결합하여 효율적이고 사용자 친화적인 쇼핑몰 서비스를 제공합니다.
 
 ---
 
@@ -27,7 +27,7 @@ KHT Academy는 Java Spring Boot를 기반으로 한 웹 애플리케이션 프�
 
 ## 디렉토리 구조
 ```
-khtAcademy
+zipup
 ├── .idea
 ├── .mvn
 ├── src
@@ -88,14 +88,14 @@ khtAcademy
   <tr>
     <td>이용자 회원가입,마이 페이지</td>
     <td>판매자 회원가입,검색 기능</td>
-    <td>메인 페이지,로그인,검색 기능, 상품 생성, 상품 디테일</td>
+    <td>메인 페이지, 로그인, 검색 기능, 상품 생성, 상품 디테일</td>
     <td>상품 생성,상품 디테일</td>
   </tr>
   <tr>
-    <td>readme 정리</td>
-    <td>문서 정리</td>
-    <td>git 담당 </td>
-    <td>노션 정리</td>
+    <td>ERD, DB, READ ME</td>
+    <td>ERD, DB, PPT</td>
+    <td>팀장, git </td>
+    <td>노션 정리, 디자인</td>
   </tr>
 </table>
 
@@ -110,7 +110,7 @@ khtAcademy
 
 2. 프로젝트 디렉토리로 이동합니다.
    ```bash
-   cd khtAcademy
+   cd zipup
    ```
 
 3. 필요한 의존성을 설치합니다.
