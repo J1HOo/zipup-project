@@ -29,7 +29,6 @@ public class ProductServiceImpl implements ProductService {
             int price,
             String option1,
             String option2,
-            String option3,
             String category,
             MultipartFile description) {
         String productDir = System.getProperty("user.dir") + "/src/main/resources/static/images/product_images/";

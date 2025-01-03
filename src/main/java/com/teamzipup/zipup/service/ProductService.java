@@ -18,7 +18,6 @@ public interface ProductService {
             int price,
             String option1,
             String option2,
-            String option3,
             String category,
             MultipartFile description
     );

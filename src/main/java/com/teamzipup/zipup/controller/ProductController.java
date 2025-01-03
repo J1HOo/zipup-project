@@ -101,7 +101,6 @@ public class ProductController {
                              @RequestParam("price") int price,
                              @RequestParam(value = "option1", required = false) String option1,
                              @RequestParam(value = "option2", required = false) String option2,
-                             @RequestParam(value = "option3", required = false) String option3,
                              @RequestParam("category") String category,
                              @RequestParam("description") MultipartFile description,
                              @RequestParam("image") MultipartFile image,
@@ -116,7 +115,7 @@ public class ProductController {
 
         try {
             long sellerId = loginUser.getId();
-            long productId = productService.insertProduct(sellerId, image, productName, price, option1, option2, option3, category, description);
+            long productId = productService.insertProduct(sellerId, image, productName, price, option1, option2, category, description);
             return "redirect:/product/detail/" + productId;
         } catch (Exception e) {
             model.addAttribute("error", "상품 등록 중 문제가 발생했습니다.");
