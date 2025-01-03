@@ -31,7 +31,7 @@ public class AuthController {
         user.setRole("user"); // 이용자 역할 설정
         userService.insertUser(user);
 
-        return "login";
+        return "/login";
     }
     // 이메일 중복체크
     @GetMapping("/check-email")
