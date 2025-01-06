@@ -131,7 +131,6 @@ public class AuthController {
         User loggedInUser = (User) session.getAttribute("loginUser");
         if(loggedInUser != null){
             model.addAttribute("user", loggedInUser);
-            System.out.println("Logged-in user: " + loggedInUser);
         }else{
             model.addAttribute("user", new User());
         }

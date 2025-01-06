@@ -13,12 +13,12 @@
 <div class="zipup-container">
   <div th:replace="~{layout/subHeader :: subHeader}"></div>
   <div class="userSignupContainer">
-    <form class="signup-form" action="/signup/user" method="post">
+    <form class="signup-user-form" action="/signup/user" method="post">
       <h1 class="zipup-label">로그인 정보</h1>
       <!-- 아이디(이메일) -->
       <div class="signup-form-group">
-      <input class="signup-inputEmail" type="email" id="email" name="email" placeholder="이메일" required ><br>
-      <button type="button" id="check-email-btn" class="signup-checkBtn">중복 확인</button><br>
+        <input class="signup-inputEmail" type="email" id="email" name="email" placeholder="이메일" required ><br>
+        <button type="button" id="check-email-btn" class="signup-checkBtn">중복 확인</button><br>
       </div>
 
       <!-- 에러 메시지 표시 -->
