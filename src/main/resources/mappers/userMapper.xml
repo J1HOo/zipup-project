@@ -25,7 +25,7 @@
     <select id="findByEmail">
         SELECT id, email, password, role, address, userName, phoneNumber, companyName, businessNumber
         FROM user
-        WHERE email = #{eamail}
+        WHERE email = #{email}
     </select>
 
     <!-- 아이디(이메일) 중복 확인 -->

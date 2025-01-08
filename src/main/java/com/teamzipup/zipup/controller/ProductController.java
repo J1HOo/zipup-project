@@ -47,7 +47,7 @@ public class ProductController {
 
         // 랜덤 상품
         if ("ALL".equals(category)) {
-            List<Product> todayProducts = productService.getRandomProducts(5);
+            List<Product> todayProducts = productService.getRandomProducts(4);
             model.addAttribute("todayProducts", todayProducts);
             model.addAttribute("formattedTodayPrices", formatPrices(todayProducts));
         } else {
